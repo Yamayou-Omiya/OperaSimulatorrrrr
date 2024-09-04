@@ -26,7 +26,7 @@ public class BallController : MonoBehaviour
             ball_transform.x = -1*ball_transform.x;
         }
         if(collision.gameObject.name == "Frame_U" || collision.gameObject.name == "Frame_B"){
-            ball_transform.x = -1*ball_transform.x;
+            ball_transform.z = -1*ball_transform.z;
         }
     }
 }

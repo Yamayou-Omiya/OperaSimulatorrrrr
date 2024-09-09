@@ -481,6 +481,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &1005418697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1005418698}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1005418698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005418697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.000000059604645, y: 0, z: -0.00000011920929}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1223307103
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,11 +541,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 183978483}
-  - {fileID: 68571828}
   - {fileID: 1680828737}
+  - {fileID: 68571828}
   - {fileID: 1563133273}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562195073
 GameObject:
@@ -883,11 +914,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1685372104}
+  - component: {fileID: 1685372106}
   - component: {fileID: 1685372103}
   - component: {fileID: 1685372102}
   - component: {fileID: 1685372101}
   - component: {fileID: 1685372105}
-  - component: {fileID: 1685372106}
   m_Layer: 0
   m_Name: Ball Target
   m_TagString: Untagged
@@ -1021,6 +1052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1685372105}
+  ballDiameter: 0.2
   ball_transform: {x: 0.05, y: 0, z: 0.05}
 --- !u!1 &1956648928
 GameObject:
@@ -1125,9 +1157,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2071791937}
+  - component: {fileID: 2071791932}
   - component: {fileID: 2071791936}
   - component: {fileID: 2071791935}
-  - component: {fileID: 2071791932}
   - component: {fileID: 2071791934}
   - component: {fileID: 2071791938}
   m_Layer: 0
@@ -1151,6 +1183,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 2071791938}
   target: {fileID: 1685372100}
+  areaDiameter: 1
+  mouse_control: 1
+  controller_control: 0
 --- !u!136 &2071791934
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1237,7 +1272,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2071791938
 Rigidbody:

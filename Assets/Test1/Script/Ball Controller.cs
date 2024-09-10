@@ -20,11 +20,14 @@ public class BallController : MonoBehaviour
         this.transform.position += ball_transform;
     }
 
-    private void OnCollisionEnter(Collision collision){
-        if(collision.gameObject.name == "Frame_R" || collision.gameObject.name == "Frame_L"){
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Frame_R" || collision.gameObject.name == "Frame_L")
+        {
             ball_transform.x = -1 * ball_transform.x;
         }
-        if(collision.gameObject.name == "Frame_U" || collision.gameObject.name == "Frame_B"){
+        if(collision.gameObject.name == "Frame_U" || collision.gameObject.name == "Frame_B")
+        {
             ball_transform.z = -1 * ball_transform.z;
         }
     }

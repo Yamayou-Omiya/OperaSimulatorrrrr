@@ -31,14 +31,7 @@ public class ObstacleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(obstacleNum > 0)
-        {
-            for(int i = 0; i < obstacleNum; i++)
-            {
-                obstacle[i].transform.position += obstacle_transform[i];
-            }
-        }
-
+        move();
         reflection();
     }
 
@@ -66,6 +59,17 @@ public class ObstacleController : MonoBehaviour
         }
     }
 
+    private void move()
+    {
+        if(obstacleNum > 0)
+        {
+            for(int i = 0; i < obstacleNum; i++)
+            {
+                obstacle[i].transform.position += obstacle_transform[i];
+            }
+        }
+    }
+    
     private void reflection()
     {
         if(obstacleNum > 0)

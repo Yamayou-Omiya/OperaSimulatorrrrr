@@ -1107,6 +1107,8 @@ MonoBehaviour:
   rigidbody: {fileID: 1685372105}
   ballDiameter: 0.2
   ball_transform: {x: 0.05, y: 0, z: 0.05}
+  speed_x: 0.05
+  speed_z: 0.05
 --- !u!1 &1956648928
 GameObject:
   m_ObjectHideFlags: 0

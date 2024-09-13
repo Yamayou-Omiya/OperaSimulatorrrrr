@@ -43,7 +43,7 @@ public class AreaController : MonoBehaviour
             stayTime += Time.deltaTime;
             if(stayTime >= requiredStayTime)
             {
-                return color_changer.green;
+                return Color.green;
             }
             else
             {

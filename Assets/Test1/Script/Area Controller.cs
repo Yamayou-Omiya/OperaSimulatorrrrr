@@ -14,6 +14,8 @@ public class AreaController : MonoBehaviour
 
     private float stayTime = 0;
     public float requiredStayTime = 3.0f;
+
+    public GameObject targetObject;
     
     // Start is called before the first frame update
     void Start()
@@ -27,10 +29,11 @@ public class AreaController : MonoBehaviour
         if(mouse_control)
         {
             mouse = Input.mousePosition;
-            this.transform.position = new Vector3((mouse.x - 960)/(960/5.05f), 0, (mouse.y - 540)/(540/2.85f));
+            this.transform.position = new Vector3((mouse.x - 960)/(960/5.2f), 0, (mouse.y - 540)/(540/2.9f));
         }
 
         gameObject.GetComponent<Renderer>().material.color = color_changer();
+        color_check();
     }       
 
     private Color color_changer()
@@ -56,6 +59,33 @@ public class AreaController : MonoBehaviour
             stayTime = 0;
             return Color.yellow;
         }
+    }
+
+    private void color_check()
+    {
+        Renderer renderer = GetComponent<Renderer>();
+
+        if (renderer != null)
+        {
+            Color currentColor = renderer.material.color;
+
+            if (IsColorGreen(currentColor))
+            {
+                if(Input.GetMouseButtonDown(0))
+                {
+                    Destroy(targetObject);
+                }
+            }
+        }
+    }
+
+    bool IsColorGreen(Color color)
+    {
+        // Color.greenと現在の色が近似しているかを判定
+        float tolerance = 0.1f; // 許容誤差
+        return Mathf.Abs(color.r - Color.green.r) < tolerance &&
+               Mathf.Abs(color.g - Color.green.g) < tolerance &&
+               Mathf.Abs(color.b - Color.green.b) < tolerance;
     }
 
     private void diameter_changer(float newDiameter)

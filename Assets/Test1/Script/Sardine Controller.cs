@@ -5,10 +5,10 @@ using UnityEngine;
 public class SardineController : MonoBehaviour
 {
     public Rigidbody rigitbody;
-    public Vector3 sardine_transform = new Vector3(0.005f, 0, 0.005f);
+    public Vector3 sardine_transform = new Vector3(0.002f, 0, 0.002f);
     private float deg = 0;
-    public float speed_x = 0.005f;
-    public float speed_z = 0.005f; 
+    public float speed_x = 0.002f;
+    public float speed_z = 0.002f; 
 
 
     
@@ -27,11 +27,7 @@ public class SardineController : MonoBehaviour
 
     private void rotation(float z, float x)
     {
-        deg = Mathf.Atan2(z, x) * Mathf.Rad2Deg;
-        if(deg > -90 && deg < 0 || deg > 90 && deg < 180)
-        {
-            deg = deg + 180;
-        }
+        deg = 90 - Mathf.Atan2(z, x) * Mathf.Rad2Deg;
         this.gameObject.transform.eulerAngles = new Vector3(0, deg, 0);
     }
 

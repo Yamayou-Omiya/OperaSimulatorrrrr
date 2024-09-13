@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 992078825}
   - component: {fileID: 992078824}
   m_Layer: 0
-  m_Name: Obstacle Controller
+  m_Name: Obstacle Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1394,7 +1394,7 @@ MonoBehaviour:
   mouse_control: 1
   controller_control: 0
   requiredStayTime: 3
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 804276318}
 --- !u!136 &2071791934
 CapsuleCollider:
   m_ObjectHideFlags: 0

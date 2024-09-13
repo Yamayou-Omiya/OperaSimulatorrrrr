@@ -53,6 +53,7 @@ public class AreaController : MonoBehaviour
         }
         else
         {
+            stayTime = 0;
             return Color.yellow;
         }
     }

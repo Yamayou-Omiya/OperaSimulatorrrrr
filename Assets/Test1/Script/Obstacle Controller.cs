@@ -5,18 +5,16 @@ using UnityEngine;
 public class ObstacleController : MonoBehaviour
 {
     public Rigidbody rigidbody;
-
-    public GameObject obstaclePrefab;
-    public int obstacleNum = 0;
-    private GameObject[] obstacle;
+    public ObstacleGenerator obsGen;
+    //public GameObject obstaclePrefab;
 
     public float obstacleDiameter = 0.2f;
     public float width = 5.05f;
     public float height = 2.85f;
-    public float speed_x = 0.05f;
+    /*public float speed_x = 0.05f;
     public float speed_z = 0.05f;
     private float x = 0;  
-    private float z = 0;
+    private float z = 0;*/
     private float move_x = 0;
     private float move_z = 0;
     public Vector3[] obstacle_transform;
@@ -24,7 +22,19 @@ public class ObstacleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        obstacle_spawner();
+        //obstacle_spawner();
+        public int obsNum = obsGen.obstacleNum;
+        private GameObject[] obs;
+        public float width = obsGen.width;
+        public float height = obsGen.height;
+        
+        if(obsNum > 0)
+        {
+            obs = new GameObject[obsNum];
+            obs = obuGen.obstacle;
+            obstacle_transform = new Vector3[obsNum];
+        }
+
         diameter_changer(obstacleDiameter);
     }
 
@@ -35,14 +45,13 @@ public class ObstacleController : MonoBehaviour
         reflection();
     }
 
-    private void obstacle_spawner()
+    /*private void obstacle_spawner()
     {
-        if(obstacleNum > 0)
+        if(obsNum > obsGen.obstacleNum)
         {
-            obstacle = new GameObject[obstacleNum];
-            obstacle_transform = new Vector3[obstacleNum];
-
-            for(int i = 0; i < obstacleNum; i++)
+            obstacle = new GameObject[obsNum];
+            obstacle_transform = new Vector3[obsNum];
+            for(int i = 0; i < obsNum; iobsGen.obstacleNum+)
             {
                 obstacle[i] = Instantiate(obstaclePrefab) as GameObject;
 
@@ -57,30 +66,30 @@ public class ObstacleController : MonoBehaviour
                 obstacle_transform[i] = new Vector3(move_x, 0, move_z);
             }
         }
-    }
+    }*/
 
     private void move()
     {
-        if(obstacleNum > 0)
+        if(obsNum > 0)
         {
-            for(int i = 0; i < obstacleNum; i++)
+            for(int i = 0; i < obsNum; i++)
             {
-                obstacle[i].transform.position += obstacle_transform[i];
+                obs[i].transform.position += obstacle_transform[i];
             }
         }
     }
     
     private void reflection()
     {
-        if(obstacleNum > 0)
+        if(obsNum > 0)
         {
-            for(int i = 0; i < obstacleNum; i++)
+            for(int i = 0; i < obsNum; i++)
             {
-                if(obstacle[i].transform.position.x >= width - obstacleDiameter/2 || obstacle[i].transform.position.x <= - width + obstacleDiameter/2)
+                if(obs[i].transform.position.x >= width - obstacleDiameter/2 || obs[i].transform.position.x <= - width + obstacleDiameter/2)
                 {
                     obstacle_transform[i].x = -1 * obstacle_transform[i].x;
                 }
-                if(obstacle[i].transform.position.z >= height - obstacleDiameter/2 || obstacle[i].transform.position.z <= - height + obstacleDiameter/2)
+                if(obs[i].transform.position.z >= height - obstacleDiameter/2 || obs[i].transform.position.z <= - height + obstacleDiameter/2)
                 {
                     obstacle_transform[i].z = -1 * obstacle_transform[i].z;
                 }
@@ -90,12 +99,12 @@ public class ObstacleController : MonoBehaviour
 
     private void diameter_changer(float newDiameter)
     {
-        if(obstacle != null && obstacle.Length > 0)
+        if(obs != null && obs.Length > 0)
         {
-            for(int i = 0; i < obstacleNum; i++)
+            for(int i = 0; i < obsNum; i++)
             {
                 Vector3 scale = new Vector3(newDiameter, newDiameter, newDiameter);
-                obstacle[i].transform.localScale = scale;
+                obs[i].transform.localScale = scale;
             }
         }
     }

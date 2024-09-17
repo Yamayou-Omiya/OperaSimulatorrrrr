@@ -22,7 +22,7 @@ public class SardineController : MonoBehaviour
     void Update()
     {
         rotation(sardine_transform.z, sardine_transform.x);
-        this.transform.position += sardine_transform;
+        this.transform.position += sardine_transform * Time.deltaTime;
     }
 
     private void rotation(float z, float x)

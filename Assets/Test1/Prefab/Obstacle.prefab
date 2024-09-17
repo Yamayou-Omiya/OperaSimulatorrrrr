@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7037484083683962295
 MeshFilter:
@@ -146,9 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e941223491047ff4a8feebddb1d33a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
-  obstaclePrefab: {fileID: 0}
-  obstacleNum: 0
+  rigidbody: {fileID: 5001149202054248995}
+  obstaclePrefab: {fileID: 1332799691866265898}
+  obstacleNum: 6
   obstacleDiameter: 0.2
   width: 5.05
   height: 2.85

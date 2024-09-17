@@ -526,9 +526,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigitbody: {fileID: 804276321}
-  sardine_transform: {x: 0, y: 0, z: 0}
-  speed_x: 0.002
-  speed_z: 0.002
+  sardine_transform: {x: 5, y: 0, z: 5}
+  speed_x: 5
+  speed_z: 5
 --- !u!135 &804276323
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -568,15 +568,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400090, guid: 39d1d561405e53c4fb35e73a03627611, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.1940699
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 400090, guid: 39d1d561405e53c4fb35e73a03627611, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.063
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400090, guid: 39d1d561405e53c4fb35e73a03627611, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.73
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 400090, guid: 39d1d561405e53c4fb35e73a03627611, type: 3}
       propertyPath: m_LocalRotation.w
@@ -641,7 +641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 992078825}
-  - component: {fileID: 992078824}
+  - component: {fileID: 992078826}
   m_Layer: 0
   m_Name: Obstacle Generator
   m_TagString: Untagged
@@ -649,27 +649,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &992078824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992078823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e941223491047ff4a8feebddb1d33a72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidbody: {fileID: 5001149202054248995, guid: 9158deed9b275634b82e3649b59c776d, type: 3}
-  obstaclePrefab: {fileID: 1332799691866265898, guid: 9158deed9b275634b82e3649b59c776d, type: 3}
-  obstacleNum: 1
-  obstacleDiameter: 0.5
-  width: 4.7
-  height: 2.5
-  speed_x: 0.005
-  speed_z: 0.005
-  obstacle_transform: []
 --- !u!4 &992078825
 Transform:
   m_ObjectHideFlags: 0
@@ -685,6 +664,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &992078826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992078823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcba80e945d2ced46a52b4abeead2a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 5001149202054248995, guid: 9158deed9b275634b82e3649b59c776d, type: 3}
+  obstaclePrefab: {fileID: 1332799691866265898, guid: 9158deed9b275634b82e3649b59c776d, type: 3}
+  obstacleNum: 6
+  obstacleDiameter: 0.2
+  width: 5.2
+  height: 2.9
+  speed_x: 0.05
+  speed_z: 0.05
+  obstacle_transform: []
 --- !u!1 &1005418697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,7 +1129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1685372101
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class ObstacleGenerator : MonoBehaviour
 
     public GameObject obstaclePrefab;
     public int obstacleNum = 0;
-    private GameObject[] obstacle;
+    public GameObject[] obstacle;
 
     public float obstacleDiameter = 0.2f;
     public float width = 5.2f;

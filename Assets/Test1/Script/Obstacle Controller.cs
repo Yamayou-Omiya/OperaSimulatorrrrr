@@ -6,43 +6,45 @@ public class ObstacleController : MonoBehaviour
 {
     public Rigidbody rigidbody;
     public ObstacleGenerator obsGen;
-    //public GameObject obstaclePrefab;
 
     public float obstacleDiameter = 0.2f;
     public float width = 5.05f;
     public float height = 2.85f;
-    /*public float speed_x = 0.05f;
-    public float speed_z = 0.05f;
-    private float x = 0;  
-    private float z = 0;*/
-    private float move_x = 0;
-    private float move_z = 0;
-    public Vector3[] obstacle_transform;
+
+    public int obsNum;
+    private GameObject[] obs;
+
+    public float speedX = 0.05f;
+    public float speedZ = 0.05f;
+    private float moveX = 0;
+    private float moveZ = 0;
+    public Vector3[] obstacleTransform;
     
     // Start is called before the first frame update
     void Start()
     {
-        //obstacle_spawner();
-        public int obsNum = obsGen.obstacleNum;
-        private GameObject[] obs;
-        public float width = obsGen.width;
-        public float height = obsGen.height;
+        obsGen = GameObject.Find("Obstacle Generator").GetComponent<ObstacleGenerator>();
+        
+        obsNum = obsGen.obstacleNum;
+        width = obsGen.width;
+        height = obsGen.height;
         
         if(obsNum > 0)
         {
             obs = new GameObject[obsNum];
-            obs = obuGen.obstacle;
-            obstacle_transform = new Vector3[obsNum];
+            obs = obsGen.obstacle;
+            obstacleTransform = new Vector3[obsNum];
         }
 
-        diameter_changer(obstacleDiameter);
+        DiameterChanger(obstacleDiameter);
+        SpeedSetting();
     }
 
     // Update is called once per frame
     void Update()
     {
-        move();
-        reflection();
+        Move();
+        //reflection();
     }
 
     /*private void obstacle_spawner()
@@ -50,7 +52,7 @@ public class ObstacleController : MonoBehaviour
         if(obsNum > obsGen.obstacleNum)
         {
             obstacle = new GameObject[obsNum];
-            obstacle_transform = new Vector3[obsNum];
+            obstacleTransform = new Vector3[obsNum];
             for(int i = 0; i < obsNum; iobsGen.obstacleNum+)
             {
                 obstacle[i] = Instantiate(obstaclePrefab) as GameObject;
@@ -60,26 +62,40 @@ public class ObstacleController : MonoBehaviour
 
                 obstacle[i].transform.position = new Vector3(x, 0.05f, z);
 
-                move_x = Random.Range(- speed_x, speed_x);
-                move_z = Random.Range(- speed_z, speed_z);
+                moveX = Random.Range(- speedX, speedX);
+                moveZ = Random.Range(- speedZ, speedZ);
 
-                obstacle_transform[i] = new Vector3(move_x, 0, move_z);
+                obstacleTransform[i] = new Vector3(moveX, 0, moveZ);
             }
         }
     }*/
 
-    private void move()
+    private void SpeedSetting()
     {
         if(obsNum > 0)
         {
             for(int i = 0; i < obsNum; i++)
             {
-                obs[i].transform.position += obstacle_transform[i];
+                moveX = Random.Range(- speedX, speedX);
+                moveZ = Random.Range(- speedZ, speedZ);
+
+                obstacleTransform[i] = new Vector3(moveX, 0, moveZ);
+            }
+        }
+    }
+
+    private void Move()
+    {
+        if(obsNum > 0)
+        {
+            for(int i = 0; i < obsNum; i++)
+            {
+                obs[i].transform.position += obstacleTransform[i] * Time.deltaTime;
             }
         }
     }
     
-    private void reflection()
+    /*private void reflection()
     {
         if(obsNum > 0)
         {
@@ -87,17 +103,74 @@ public class ObstacleController : MonoBehaviour
             {
                 if(obs[i].transform.position.x >= width - obstacleDiameter/2 || obs[i].transform.position.x <= - width + obstacleDiameter/2)
                 {
-                    obstacle_transform[i].x = -1 * obstacle_transform[i].x;
+                    obstacleTransform[i].x = -1 * obstacleTransform[i].x;
                 }
                 if(obs[i].transform.position.z >= height - obstacleDiameter/2 || obs[i].transform.position.z <= - height + obstacleDiameter/2)
                 {
-                    obstacle_transform[i].z = -1 * obstacle_transform[i].z;
+                    obstacleTransform[i].z = -1 * obstacleTransform[i].z;
                 }
             }
         }
+    }*/
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Frame_R")
+        {
+            obstacleTransform.x = Random.Range(-1 * speed_x, -1 * speed_x / 2);
+            int dice = Random.Range(1, 3);
+            if(dice == 1)
+            {
+                ball_transform.z = Random.Range(-1 * speed_z, -1 * speed_z / 2);
+            }
+            else if(dice == 2)
+            {
+                ball_transform.z = Random.Range(speed_z, speed_z / 2);
+            }     
+        }
+        if(collision.gameObject.name == "Frame_L")
+        {
+            ball_transform.x = Random.Range(speed_x / 2, speed_x);
+            int dice = Random.Range(1, 3);
+            if(dice == 1)
+            {
+                ball_transform.z = Random.Range(-1 * speed_z, -1 * speed_z / 2);
+            }
+            else if(dice == 2)
+            {
+                ball_transform.z = Random.Range(speed_z, speed_z / 2);
+            }     
+        }
+        if(collision.gameObject.name == "Frame_U")
+        {
+            ball_transform.z = Random.Range(-1 * speed_z, -1 * speed_z / 2);
+            int dice = Random.Range(1, 3);
+            if(dice == 1)
+            {
+                ball_transform.x = Random.Range(-1 * speed_x, -1 * speed_x / 2);
+            }
+            else if(dice == 2)
+            {
+                ball_transform.x = Random.Range(speed_x, speed_x / 2);
+            }     
+        }
+        if(collision.gameObject.name == "Frame_B")
+        {
+            ball_transform.z = Random.Range(speed_z / 2, speed_z);
+            int dice = Random.Range(1, 3);
+            if(dice == 1)
+            {
+                ball_transform.x = Random.Range(-1 * speed_x, -1 * speed_x / 2);
+            }
+            else if(dice == 2)
+            {
+                ball_transform.x = Random.Range(speed_x, speed_x / 2);
+            }     
+        }
+
     }
 
-    private void diameter_changer(float newDiameter)
+    private void DiameterChanger(float newDiameter)
     {
         if(obs != null && obs.Length > 0)
         {

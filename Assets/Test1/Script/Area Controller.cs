@@ -5,9 +5,10 @@ using UnityEngine;
 public class AreaController : MonoBehaviour
 {
     public Rigidbody rigidbody;
+    public SardineGenerator sarGen;
     private Vector3 mouse;
     [SerializeField] GameObject target;
-    [SerializeField] GameObject sardine;
+    public GameObject sardine;
     public float areaDiameter = 1.0f;
     [SerializeField] bool mouseControl;
     [SerializeField] bool controllerControl;
@@ -16,20 +17,29 @@ public class AreaController : MonoBehaviour
     public float requiredStayTime = 2.0f;
 
     public GameObject targetObject;
+
+    public int sardineKey = 1;
     
     // Start is called before the first frame update
     void Start()
     {
         DiameterChanger(areaDiameter);
+        sarGen = GameObject.Find("Sardine Generator").GetComponent<SardineGenerator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        sardine = sarGen.sardine;
         if(mouseControl)
         {
             mouse = Input.mousePosition;
             this.transform.position = new Vector3((mouse.x - 960)/(960/5.2f), 0, (mouse.y - 540)/(540/2.9f));
+        }
+
+        if(sardineKey == 0)
+        {
+            sardineKey = sarGen.areaKey;
         }
 
         gameObject.GetComponent<Renderer>().material.color = ColorChanger();
@@ -72,7 +82,9 @@ public class AreaController : MonoBehaviour
             {
                 if(Input.GetMouseButtonDown(0))
                 {
-                    Destroy(targetObject);
+                    Destroy(sardine);
+                    gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+                    sardineKey = 0;
                 }
             }
         }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SardineController : MonoBehaviour
 {
     public Rigidbody rigitbody;
+    public SardineGenerator sarGen;
     public Vector3 sardineTransform = new Vector3(1.0f, 0, 1.0f);
     private float deg = 0;
     public float speedX = 1.0f;
@@ -13,7 +14,7 @@ public class SardineController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        sarGen = GameObject.Find("Sardine Generator").GetComponent<SardineGenerator>();
     }
 
     // Update is called once per frame

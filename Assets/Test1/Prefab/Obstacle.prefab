@@ -50,9 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 5001149202054248995}
   obsGen: {fileID: 0}
-  obstacleDiameter: 0.2
-  width: 5.05
-  height: 2.85
+  obstacleDiameter: 0.4
+  width: 5.2
+  height: 2.9
   obsNum: 0
   speedX: 0.5
   speedZ: 0.5

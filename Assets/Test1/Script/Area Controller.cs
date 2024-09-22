@@ -13,7 +13,7 @@ public class AreaController : MonoBehaviour
     [SerializeField] bool controllerControl;
 
     private float stayTime = 0;
-    public float requiredStayTime = 3.0f;
+    public float requiredStayTime = 2.0f;
 
     public GameObject targetObject;
     

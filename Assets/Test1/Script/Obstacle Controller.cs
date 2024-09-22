@@ -8,8 +8,8 @@ public class ObstacleController : MonoBehaviour
     public ObstacleGenerator obsGen;
 
     public float obstacleDiameter = 0.2f;
-    public float width = 5.05f;
-    public float height = 2.85f;
+    public float width = 5.2f;
+    public float height = 2.9f;
 
     public int obsNum;
     private GameObject[] obs;
@@ -33,7 +33,6 @@ public class ObstacleController : MonoBehaviour
         {
             obs = new GameObject[obsNum];
             obs = obsGen.obstacle;
-            //obstacleTransform = new Vector3[obsNum];
         }
 
         DiameterChanger(obstacleDiameter);
@@ -44,31 +43,7 @@ public class ObstacleController : MonoBehaviour
     void Update()
     {
         Move();
-        //reflection();
     }
-
-    /*private void obstacle_spawner()
-    {
-        if(obsNum > obsGen.obstacleNum)
-        {
-            obstacle = new GameObject[obsNum];
-            obstacleTransform = new Vector3[obsNum];
-            for(int i = 0; i < obsNum; iobsGen.obstacleNum+)
-            {
-                obstacle[i] = Instantiate(obstaclePrefab) as GameObject;
-
-                x = Random.Range(- width + obstacleDiameter/2 + 0.2f, width - obstacleDiameter/2 - 0.2f);
-                z = Random.Range(- height + obstacleDiameter/2 + 0.2f, height - obstacleDiameter/2 - 0.2f);
-
-                obstacle[i].transform.position = new Vector3(x, 0.05f, z);
-
-                moveX = Random.Range(- speedX, speedX);
-                moveZ = Random.Range(- speedZ, speedZ);
-
-                obstacleTransform[i] = new Vector3(moveX, 0, moveZ);
-            }
-        }
-    }*/
 
     private void SpeedSetting()
     {
@@ -83,24 +58,6 @@ public class ObstacleController : MonoBehaviour
         this.transform.position += obstacleTransform * Time.deltaTime;
     }
     
-    /*private void reflection()
-    {
-        if(obsNum > 0)
-        {
-            for(int i = 0; i < obsNum; i++)
-            {
-                if(obs[i].transform.position.x >= width - obstacleDiameter/2 || obs[i].transform.position.x <= - width + obstacleDiameter/2)
-                {
-                    obstacleTransform[i].x = -1 * obstacleTransform[i].x;
-                }
-                if(obs[i].transform.position.z >= height - obstacleDiameter/2 || obs[i].transform.position.z <= - height + obstacleDiameter/2)
-                {
-                    obstacleTransform[i].z = -1 * obstacleTransform[i].z;
-                }
-            }
-        }
-    }*/
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.name == "Frame_R")

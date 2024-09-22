@@ -526,9 +526,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigitbody: {fileID: 804276321}
-  sardine_transform: {x: 5, y: 0, z: 5}
-  speed_x: 1
-  speed_z: 1
+  sardineTransform: {x: 1, y: 0, z: 1}
+  speedX: 1
+  speedZ: 1
 --- !u!135 &804276323
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1257,9 +1257,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1685372105}
   ballDiameter: 0.2
-  ball_transform: {x: 0.05, y: 0, z: 0.05}
-  speed_x: 0.05
-  speed_z: 0.05
+  ballTransform: {x: 0.05, y: 0, z: 0.05}
+  speedX: 0.05
+  speedZ: 0.05
 --- !u!1 &1956648928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,9 +1391,9 @@ MonoBehaviour:
   target: {fileID: 1685372100}
   sardine: {fileID: 804276318}
   areaDiameter: 1
-  mouse_control: 1
-  controller_control: 0
-  requiredStayTime: 3
+  mouseControl: 1
+  controllerControl: 0
+  requiredStayTime: 2
   targetObject: {fileID: 804276318}
 --- !u!136 &2071791934
 CapsuleCollider:

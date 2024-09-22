@@ -527,8 +527,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigitbody: {fileID: 804276321}
   sardine_transform: {x: 5, y: 0, z: 5}
-  speed_x: 5
-  speed_z: 5
+  speed_x: 1
+  speed_z: 1
 --- !u!135 &804276323
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -679,12 +679,12 @@ MonoBehaviour:
   rigidbody: {fileID: 5001149202054248995, guid: 9158deed9b275634b82e3649b59c776d, type: 3}
   obstaclePrefab: {fileID: 1332799691866265898, guid: 9158deed9b275634b82e3649b59c776d, type: 3}
   obstacleNum: 6
+  obstacle: []
   obstacleDiameter: 0.2
   width: 5.2
   height: 2.9
   speed_x: 0.05
   speed_z: 0.05
-  obstacle_transform: []
 --- !u!1 &1005418697
 GameObject:
   m_ObjectHideFlags: 0

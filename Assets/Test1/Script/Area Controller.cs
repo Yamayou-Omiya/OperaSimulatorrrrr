@@ -9,8 +9,8 @@ public class AreaController : MonoBehaviour
     [SerializeField] GameObject target;
     [SerializeField] GameObject sardine;
     public float areaDiameter = 1.0f;
-    [SerializeField] bool mouse_control;
-    [SerializeField] bool controller_control;
+    [SerializeField] bool mouseControl;
+    [SerializeField] bool controllerControl;
 
     private float stayTime = 0;
     public float requiredStayTime = 3.0f;
@@ -20,28 +20,28 @@ public class AreaController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        diameter_changer(areaDiameter);
+        DiameterChanger(areaDiameter);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(mouse_control)
+        if(mouseControl)
         {
             mouse = Input.mousePosition;
             this.transform.position = new Vector3((mouse.x - 960)/(960/5.2f), 0, (mouse.y - 540)/(540/2.9f));
         }
 
-        gameObject.GetComponent<Renderer>().material.color = color_changer();
-        color_check();
+        gameObject.GetComponent<Renderer>().material.color = ColorChanger();
+        ColorCheck();
     }       
 
-    private Color color_changer()
+    private Color ColorChanger()
     {
-        float xdistance = sardine.transform.position.x - this.transform.position.x;
-        float zdistance = sardine.transform.position.z - this.transform.position.z;
+        float xDistance = sardine.transform.position.x - this.transform.position.x;
+        float zDistance = sardine.transform.position.z - this.transform.position.z;
 
-        if((xdistance*xdistance + zdistance*zdistance) <= areaDiameter*areaDiameter/4)
+        if((xDistance*xDistance + zDistance*zDistance) <= areaDiameter*areaDiameter/4)
         {
             stayTime += Time.deltaTime;
             if(stayTime >= requiredStayTime)
@@ -52,7 +52,6 @@ public class AreaController : MonoBehaviour
             {
                 return Color.red;
             }
-            
         }
         else
         {
@@ -61,7 +60,7 @@ public class AreaController : MonoBehaviour
         }
     }
 
-    private void color_check()
+    private void ColorCheck()
     {
         Renderer renderer = GetComponent<Renderer>();
 
@@ -88,7 +87,7 @@ public class AreaController : MonoBehaviour
                Mathf.Abs(color.b - Color.green.b) < tolerance;
     }
 
-    private void diameter_changer(float newDiameter)
+    private void DiameterChanger(float newDiameter)
     {
         Vector3 scale = transform.localScale;
 

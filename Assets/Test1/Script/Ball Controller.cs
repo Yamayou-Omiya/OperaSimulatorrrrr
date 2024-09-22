@@ -6,79 +6,79 @@ public class BallController : MonoBehaviour
 {
     public Rigidbody rigidbody;
     public float ballDiameter = 0.2f;
-    public Vector3 ball_transform = new Vector3(0.05f, 0f, 0.05f);
-    public float speed_x = 0.05f;
-    public float speed_z = 0.05f; 
+    public Vector3 ballTransform = new Vector3(0.05f, 0f, 0.05f);
+    public float speedX = 0.05f;
+    public float speedZ = 0.05f; 
     
     // Start is called before the first frame update
     void Start()
     {
-        diameter_changer(ballDiameter);
+        DiameterChanger(ballDiameter);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        this.transform.position += ball_transform;
+        this.transform.position += ballTransform;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.name == "Frame_R")
         {
-            ball_transform.x = Random.Range(-1 * speed_x, -1 * speed_x / 2);
+            ballTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
             int dice = Random.Range(1, 3);
             if(dice == 1)
             {
-                ball_transform.z = Random.Range(-1 * speed_z, -1 * speed_z / 2);
+                ballTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
             }
             else if(dice == 2)
             {
-                ball_transform.z = Random.Range(speed_z, speed_z / 2);
+                ballTransform.z = Random.Range(speedZ, speedZ / 2);
             }     
         }
         if(collision.gameObject.name == "Frame_L")
         {
-            ball_transform.x = Random.Range(speed_x / 2, speed_x);
+            ballTransform.x = Random.Range(speedX / 2, speedX);
             int dice = Random.Range(1, 3);
             if(dice == 1)
             {
-                ball_transform.z = Random.Range(-1 * speed_z, -1 * speed_z / 2);
+                ballTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
             }
             else if(dice == 2)
             {
-                ball_transform.z = Random.Range(speed_z, speed_z / 2);
+                ballTransform.z = Random.Range(speedZ, speedZ / 2);
             }     
         }
         if(collision.gameObject.name == "Frame_U")
         {
-            ball_transform.z = Random.Range(-1 * speed_z, -1 * speed_z / 2);
+            ballTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
             int dice = Random.Range(1, 3);
             if(dice == 1)
             {
-                ball_transform.x = Random.Range(-1 * speed_x, -1 * speed_x / 2);
+                ballTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
             }
             else if(dice == 2)
             {
-                ball_transform.x = Random.Range(speed_x, speed_x / 2);
+                ballTransform.x = Random.Range(speedX, speedX / 2);
             }     
         }
         if(collision.gameObject.name == "Frame_B")
         {
-            ball_transform.z = Random.Range(speed_z / 2, speed_z);
+            ballTransform.z = Random.Range(speedZ / 2, speedZ);
             int dice = Random.Range(1, 3);
             if(dice == 1)
             {
-                ball_transform.x = Random.Range(-1 * speed_x, -1 * speed_x / 2);
+                ballTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
             }
             else if(dice == 2)
             {
-                ball_transform.x = Random.Range(speed_x, speed_x / 2);
+                ballTransform.x = Random.Range(speedX, speedX / 2);
             }     
         }
     }
 
-    private void diameter_changer(float newDiameter)
+    private void DiameterChanger(float newDiameter)
     {
         Vector3 scale = transform.localScale;
 

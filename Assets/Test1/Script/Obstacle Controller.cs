@@ -18,7 +18,7 @@ public class ObstacleController : MonoBehaviour
     public float speedZ = 0.05f;
     private float moveX = 0;
     private float moveZ = 0;
-    public Vector3[] obstacleTransform;
+    public Vector3 obstacleTransform;
     
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class ObstacleController : MonoBehaviour
         {
             obs = new GameObject[obsNum];
             obs = obsGen.obstacle;
-            obstacleTransform = new Vector3[obsNum];
+            //obstacleTransform = new Vector3[obsNum];
         }
 
         DiameterChanger(obstacleDiameter);
@@ -72,27 +72,15 @@ public class ObstacleController : MonoBehaviour
 
     private void SpeedSetting()
     {
-        if(obsNum > 0)
-        {
-            for(int i = 0; i < obsNum; i++)
-            {
-                moveX = Random.Range(- speedX, speedX);
-                moveZ = Random.Range(- speedZ, speedZ);
+        moveX = Random.Range(- speedX, speedX);
+        moveZ = Random.Range(- speedZ, speedZ);
 
-                obstacleTransform[i] = new Vector3(moveX, 0, moveZ);
-            }
-        }
+        obstacleTransform = new Vector3(moveX, 0, moveZ);
     }
 
     private void Move()
     {
-        if(obsNum > 0)
-        {
-            for(int i = 0; i < obsNum; i++)
-            {
-                obs[i].transform.position += obstacleTransform[i] * Time.deltaTime;
-            }
-        }
+        this.transform.position += obstacleTransform * Time.deltaTime;
     }
     
     /*private void reflection()
@@ -117,54 +105,54 @@ public class ObstacleController : MonoBehaviour
     {
         if(collision.gameObject.name == "Frame_R")
         {
-            obstacleTransform.x = Random.Range(-1 * speed_x, -1 * speed_x / 2);
+            obstacleTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
             int dice = Random.Range(1, 3);
             if(dice == 1)
             {
-                ball_transform.z = Random.Range(-1 * speed_z, -1 * speed_z / 2);
+                obstacleTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
             }
             else if(dice == 2)
             {
-                ball_transform.z = Random.Range(speed_z, speed_z / 2);
+                obstacleTransform.z = Random.Range(speedZ, speedZ / 2);
             }     
         }
         if(collision.gameObject.name == "Frame_L")
         {
-            ball_transform.x = Random.Range(speed_x / 2, speed_x);
+            obstacleTransform.x = Random.Range(speedX / 2, speedX);
             int dice = Random.Range(1, 3);
             if(dice == 1)
             {
-                ball_transform.z = Random.Range(-1 * speed_z, -1 * speed_z / 2);
+                obstacleTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
             }
             else if(dice == 2)
             {
-                ball_transform.z = Random.Range(speed_z, speed_z / 2);
+                obstacleTransform.z = Random.Range(speedZ, speedZ / 2);
             }     
         }
         if(collision.gameObject.name == "Frame_U")
         {
-            ball_transform.z = Random.Range(-1 * speed_z, -1 * speed_z / 2);
+            obstacleTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
             int dice = Random.Range(1, 3);
             if(dice == 1)
             {
-                ball_transform.x = Random.Range(-1 * speed_x, -1 * speed_x / 2);
+                obstacleTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
             }
             else if(dice == 2)
             {
-                ball_transform.x = Random.Range(speed_x, speed_x / 2);
+                obstacleTransform.x = Random.Range(speedX, speedX / 2);
             }     
         }
         if(collision.gameObject.name == "Frame_B")
         {
-            ball_transform.z = Random.Range(speed_z / 2, speed_z);
+            obstacleTransform.z = Random.Range(speedZ / 2, speedZ);
             int dice = Random.Range(1, 3);
             if(dice == 1)
             {
-                ball_transform.x = Random.Range(-1 * speed_x, -1 * speed_x / 2);
+                obstacleTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
             }
             else if(dice == 2)
             {
-                ball_transform.x = Random.Range(speed_x, speed_x / 2);
+                obstacleTransform.x = Random.Range(speedX, speedX / 2);
             }     
         }
 

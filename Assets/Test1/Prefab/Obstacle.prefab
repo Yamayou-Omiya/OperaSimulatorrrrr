@@ -54,7 +54,9 @@ MonoBehaviour:
   width: 5.05
   height: 2.85
   obsNum: 0
-  obstacleTransform: []
+  speedX: 0.5
+  speedZ: 0.5
+  obstacleTransform: {x: 0, y: 0, z: 0}
 --- !u!33 &7037484083683962295
 MeshFilter:
   m_ObjectHideFlags: 0

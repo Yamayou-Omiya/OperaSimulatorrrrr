@@ -26,6 +26,7 @@ public class ObstacleController : MonoBehaviour
         obsGen = GameObject.Find("Obstacle Generator").GetComponent<ObstacleGenerator>();
         
         obsNum = obsGen.obstacleNum;
+        obstacleDiameter = obsGen.obstacleDiameter;
         width = obsGen.width;
         height = obsGen.height;
         

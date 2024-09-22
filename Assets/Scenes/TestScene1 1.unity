@@ -678,13 +678,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 5001149202054248995, guid: 9158deed9b275634b82e3649b59c776d, type: 3}
   obstaclePrefab: {fileID: 1332799691866265898, guid: 9158deed9b275634b82e3649b59c776d, type: 3}
-  obstacleNum: 6
+  obstacleNum: 10
   obstacle: []
-  obstacleDiameter: 0.2
+  obstacleDiameter: 0.4
   width: 5.2
   height: 2.9
-  speed_x: 0.05
-  speed_z: 0.05
 --- !u!1 &1005418697
 GameObject:
   m_ObjectHideFlags: 0

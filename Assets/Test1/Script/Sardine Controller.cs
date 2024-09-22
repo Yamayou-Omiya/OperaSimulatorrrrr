@@ -10,8 +10,6 @@ public class SardineController : MonoBehaviour
     public float speedX = 1.0f;
     public float speedZ = 1.0f; 
 
-
-    
     // Start is called before the first frame update
     void Start()
     {

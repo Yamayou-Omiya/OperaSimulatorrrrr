@@ -782,8 +782,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 69186229}
   Cam0: 0
-  Cam1: 1
-  Cam2: 0
+  Cam1: 0
+  Cam2: 1
   Cam3: 0
 --- !u!4 &1229023304
 Transform:

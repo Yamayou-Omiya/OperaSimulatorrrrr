@@ -34,7 +34,7 @@ public class AreaController : MonoBehaviour
         if(mouseControl)
         {
             mouse = Input.mousePosition;
-            this.transform.position = new Vector3((mouse.x - 960)/(960/5.2f), 0, (mouse.y - 540)/(540/2.9f));
+            this.transform.position = new Vector3((mouse.x - 1440)/(960/10.4f), 0, (mouse.y - 810)/(540/5.8f));
         }
 
         if(sardineKey == 0)

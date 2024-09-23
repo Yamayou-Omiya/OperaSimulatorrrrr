@@ -6,6 +6,7 @@ public class AreaController : MonoBehaviour
 {
     public Rigidbody rigidbody;
     public SardineGenerator sarGen;
+    public MainCameraController mainCamCnt;
     private Vector3 mouse;
     [SerializeField] GameObject target;
     public GameObject sardine;
@@ -25,6 +26,7 @@ public class AreaController : MonoBehaviour
     {
         DiameterChanger(areaDiameter);
         sarGen = GameObject.Find("Sardine Generator").GetComponent<SardineGenerator>();
+        mainCamCnt = GameObject.Find("Camera Controller").GetComponent<MainCameraController>();
     }
 
     // Update is called once per frame
@@ -34,7 +36,22 @@ public class AreaController : MonoBehaviour
         if(mouseControl)
         {
             mouse = Input.mousePosition;
-            this.transform.position = new Vector3((mouse.x - 1440)/(960/10.4f), 0, (mouse.y - 810)/(540/5.8f));
+            if(mainCamCnt.Cam0)
+            {
+                this.transform.position = new Vector3((mouse.x - 960)/(960/5.2f), 0, (mouse.y - 540)/(540/2.9f));
+            }
+            else if(mainCamCnt.Cam1)
+            {
+                this.transform.position = new Vector3((mouse.x - 480)/(960/10.4f), 0, (mouse.y - 810)/(540/5.8f));
+            }
+            else if(mainCamCnt.Cam2)
+            {
+                this.transform.position = new Vector3((mouse.x - 1440)/(960/10.4f), 0, (mouse.y - 810)/(540/5.8f));
+            }
+            else if(mainCamCnt.Cam3)
+            {
+                this.transform.position = new Vector3((mouse.x - 960)/(960/10.4f), 0, (mouse.y - 270)/(540/5.8f));
+            }
         }
 
         if(sardineKey == 0)

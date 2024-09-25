@@ -43,8 +43,8 @@ public class SardineGenerator : MonoBehaviour
     {
         sardine = Instantiate(sardinePrefab) as GameObject;
 
-        x = Random.Range(- width + 0.2f, width - 0.2f);
-        z = Random.Range(- height + 0.2f, height - 0.2f);
+        x = Random.Range(- width + 0.5f, width - 0.5f);
+        z = Random.Range(- height + 0.5f, height - 0.5f);
 
         sardine.transform.position = new Vector3(x, 0.5f, z);
     }

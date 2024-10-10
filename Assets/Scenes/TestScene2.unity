@@ -680,9 +680,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 5001149202054248995, guid: 9158deed9b275634b82e3649b59c776d, type: 3}
   obstaclePrefab: {fileID: 1332799691866265898, guid: 9158deed9b275634b82e3649b59c776d, type: 3}
-  obstacleNum: 10
+  obstacleNum: 15
   obstacle: []
-  obstacleDiameter: 0.4
+  obstacleDiameter: 0.8
   width: 5.2
   height: 2.9
 --- !u!1 &1005418697

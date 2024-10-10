@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigitbody: {fileID: 1543570389874599630}
+  sarGen: {fileID: 0}
   sardineTransform: {x: 1, y: 0, z: 1}
   speedX: 1
   speedZ: 1

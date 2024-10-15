@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour
 {
-    [SerializeField]string countDownTextName = "CountdownText";
+    /*[SerializeField]string countDownTextName = "CountdownText";
     
     // Start is called before the first frame update
     void Start()
@@ -36,5 +37,5 @@ public class CountDown : MonoBehaviour
 
         //文字を非表示にする
         countdownText.enabled = false;
-    }
+    }*/
 }

@@ -562,6 +562,7 @@ GameObject:
   - component: {fileID: 305684733}
   - component: {fileID: 305684732}
   - component: {fileID: 305684734}
+  - component: {fileID: 305684735}
   m_Layer: 0
   m_Name: ButtonSetting
   m_TagString: Untagged
@@ -606,6 +607,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf4af0b32d30aeb4caf2734add86081a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &305684735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305684731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3306afd9ad74aaa4c9852b79870c1e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &388060893
@@ -771,7 +784,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 448309859}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 305684735}
+        m_TargetAssemblyTypeName: SubTaskLevel, Assembly-CSharp
+        m_MethodName: Button3Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &448309859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1933,7 +1958,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1012673116}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 305684735}
+        m_TargetAssemblyTypeName: SubTaskLevel, Assembly-CSharp
+        m_MethodName: Button1Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1012673116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2058,7 +2095,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 305684732}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: ButtonClicked
+        m_MethodName: DebugButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2727,7 +2764,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1502883574}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 305684735}
+        m_TargetAssemblyTypeName: SubTaskLevel, Assembly-CSharp
+        m_MethodName: Button2Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1502883574
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,8 +17,15 @@ public class ChangeScene : MonoBehaviour
         
     }
 
-    public void ButtonClicked()
+    public void DebugButtonClicked()
     {
         SceneManager.LoadScene("TestScene2");
+    }
+    public void StartButtonClicked()
+    {
+        if()
+        {
+            
+        }
     }
 }

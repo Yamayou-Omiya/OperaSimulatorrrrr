@@ -5,6 +5,8 @@ using UnityEngine;
 public class MainCameraController : MonoBehaviour
 {
     public Camera mainCam;
+    public Camera subCam1;
+    public Camera subCam2;
 
     public bool Cam0;
     public bool Cam1;
@@ -25,18 +27,26 @@ public class MainCameraController : MonoBehaviour
         if(Cam0)
         {
             mainCam.rect = new Rect(0f, 0f, 1f, 1f);
+            //subCam1.SetActive(false);
+            //subCam2.SetActive(false);          
         }
         else if(Cam1)
         {
             mainCam.rect = new Rect(0f, 0.5f, 0.5f, 0.5f);
+            subCam1.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+            subCam2.rect = new Rect(0.25f, 0f, 0.5f, 0.5f);
         }
         else if(Cam2)
         {
             mainCam.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+            subCam1.rect = new Rect(0f, 0.5f, 0.5f, 0.5f);
+            subCam2.rect = new Rect(0.25f, 0f, 0.5f, 0.5f);
         }
         else if(Cam3)
         {
             mainCam.rect = new Rect(0.25f, 0f, 0.5f, 0.5f);
+            subCam1.rect = new Rect(0f, 0.5f, 0.5f, 0.5f);
+            subCam2.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
         }
     }
 

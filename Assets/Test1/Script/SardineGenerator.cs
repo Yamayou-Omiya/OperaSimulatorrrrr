@@ -37,6 +37,12 @@ public class SardineGenerator : MonoBehaviour
         {
             areaKey = 0;
         }
+
+        if(SardineController.sardineOut)
+        {
+            SardineSpawner();
+            SardineController.sardineOut = false;
+        }
     }
 
     private void SardineSpawner()

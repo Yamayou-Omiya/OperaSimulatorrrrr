@@ -14,6 +14,14 @@ public class MainCameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(ChangeScene.start)
+        {
+            Cam0 = ScreenPosition.screenPositionFull;
+            Cam1 = ScreenPosition.screenPosition1;
+            Cam2 = ScreenPosition.screenPosition2;
+            Cam3 = ScreenPosition.screenPosition3;
+        }
+
         if(Cam0)
         {
             mainCam.rect = new Rect(0f, 0f, 1f, 1f);

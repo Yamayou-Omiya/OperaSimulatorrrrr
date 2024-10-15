@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ChangeScene : MonoBehaviour
 {
     public Text alertText;
+    public static bool start = false;
     
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class ChangeScene : MonoBehaviour
                 if(ScreenPosition.screenPosition1||ScreenPosition.screenPosition2||ScreenPosition.screenPosition3||ScreenPosition.screenPositionFull)
                 {
                     SceneManager.LoadScene("TestScene2");
+                    start = true;
                 }
                 else
                 {

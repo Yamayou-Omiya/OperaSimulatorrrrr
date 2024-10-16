@@ -52,7 +52,7 @@ public class SardineGenerator : MonoBehaviour
         x = Random.Range(- width + 0.5f, width - 0.5f);
         z = Random.Range(- height + 0.5f, height - 0.5f);
 
-        sardine.transform.position = new Vector3(x, 0.5f, z);
+        sardine.transform.position = new Vector3(x, 0.1f, z);
     }
 
 }

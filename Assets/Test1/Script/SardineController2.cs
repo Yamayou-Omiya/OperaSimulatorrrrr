@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SardineController : MonoBehaviour
+public class SardineController2 : MonoBehaviour
 {
     public Rigidbody rigitbody;
     public SardineGenerator sarGen;
@@ -10,8 +10,6 @@ public class SardineController : MonoBehaviour
     private float deg = 0;
     public float speedX = 1.0f;
     public float speedZ = 1.0f;
-    public float width = 3.0f;
-    public float height = 1.75f;
 
     public static bool sardineOut = false;
 
@@ -44,7 +42,7 @@ public class SardineController : MonoBehaviour
 
     private void Reflection(Vector3 position)
     {
-        if(position.x >= width)
+        if(position.x >= 3.0f)
         {
             sardineTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
             int dice = Random.Range(1, 4);
@@ -57,7 +55,7 @@ public class SardineController : MonoBehaviour
                 sardineTransform.z = Random.Range(speedZ, speedZ / 2);
             }     
         }
-        if(position.x <= -width)
+        if(position.x <= -3.0f)
         {
             sardineTransform.x = Random.Range(speedX / 2, speedX);
             int dice = Random.Range(1, 4);
@@ -70,7 +68,7 @@ public class SardineController : MonoBehaviour
                 sardineTransform.z = Random.Range(speedZ, speedZ / 2);
             }     
         }
-        if(position.z >= height)
+        if(position.z >= 1.75f)
         {
             sardineTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
             int dice = Random.Range(1, 4);
@@ -83,7 +81,7 @@ public class SardineController : MonoBehaviour
                 sardineTransform.x = Random.Range(speedX, speedX / 2);
             }     
         }
-        if(position.z <= -height)
+        if(position.z <= -1.75f)
         {
             sardineTransform.z = Random.Range(speedZ / 2, speedZ);
             int dice = Random.Range(1, 4);
@@ -97,60 +95,4 @@ public class SardineController : MonoBehaviour
             }     
         }
     }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.name == "Frame_R")
-        {
-            sardineTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
-            int dice = Random.Range(1, 4);
-            if(dice <= 2)
-            {
-                sardineTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
-            }
-            else if(dice == 3)
-            {
-                sardineTransform.z = Random.Range(speedZ, speedZ / 2);
-            }     
-        }
-        if(collision.gameObject.name == "Frame_L")
-        {
-            sardineTransform.x = Random.Range(speedX / 2, speedX);
-            int dice = Random.Range(1, 4);
-            if(dice <= 2)
-            {
-                sardineTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
-            }
-            else if(dice == 3)
-            {
-                sardineTransform.z = Random.Range(speedZ, speedZ / 2);
-            }     
-        }
-        if(collision.gameObject.name == "Frame_U")
-        {
-            sardineTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
-            int dice = Random.Range(1, 4);
-            if(dice <= 2)
-            {
-                sardineTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
-            }
-            else if(dice == 3)
-            {
-                sardineTransform.x = Random.Range(speedX, speedX / 2);
-            }     
-        }
-        if(collision.gameObject.name == "Frame_B")
-        {
-            sardineTransform.z = Random.Range(speedZ / 2, speedZ);
-            int dice = Random.Range(1, 4);
-            if(dice <= 2)
-            {
-                sardineTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
-            }
-            else if(dice == 3)
-            {
-                sardineTransform.x = Random.Range(speedX, speedX / 2);
-            }     
-        }
-    }*/
 }

@@ -20,11 +20,11 @@ public class QuestionAndRecord : MonoBehaviour
     public bool mainPos3 = false;
     public bool mainPosFull = false;
 
-    [SerializeField, PersistentAmongPlayMode] private bool listResetLevel1;
-    [SerializeField, PersistentAmongPlayMode] private List<int> questionLevel1List1 = new List<int>();
-    [SerializeField, PersistentAmongPlayMode] private List<int> questionLevel1List2 = new List<int>();
-    [SerializeField, PersistentAmongPlayMode] private List<int> questionLevel1List3 = new List<int>();
-    [SerializeField, PersistentAmongPlayMode] private List<string> characterLevel1List = new List<string>();
+    [SerializeField, PersistentAmongPlayMode] private bool listReset;
+    [SerializeField, PersistentAmongPlayMode] private List<int> questionList1 = new List<int>();
+    [SerializeField, PersistentAmongPlayMode] private List<int> questionList2 = new List<int>();
+    [SerializeField, PersistentAmongPlayMode] private List<int> questionList3 = new List<int>();
+    [SerializeField, PersistentAmongPlayMode] private List<string> characterList = new List<string>();
 
     List<Vector2> textPosList = new List<Vector2>();
 
@@ -55,7 +55,7 @@ public class QuestionAndRecord : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level1 = SubTaskLevel.subLevel1;
+        /*level1 = SubTaskLevel.subLevel1;
         level2 = SubTaskLevel.subLevel2;
         level3 = SubTaskLevel.subLevel3;
         color1 = SubTaskColor.subColor1;
@@ -64,7 +64,7 @@ public class QuestionAndRecord : MonoBehaviour
         mainPos1 = ScreenPosition.screenPosition1;
         mainPos2 = ScreenPosition.screenPosition2;
         mainPos3 = ScreenPosition.screenPosition3;
-        mainPosFull = ScreenPosition.screenPositionFull;
+        mainPosFull = ScreenPosition.screenPositionFull;*/
         
         for(int i = 0; i < 27; i++)
         {
@@ -76,20 +76,20 @@ public class QuestionAndRecord : MonoBehaviour
 
         //csv_writer = GameObject.Find("CSV writer");
 
-        if(listResetLevel1)
+        if(listReset)
         {
-            questionLevel1List1 = new List<int>();
-            questionLevel1List2 = new List<int>();
-            questionLevel1List3 = new List<int>();
-            characterLevel1List = new List<string>();
+            questionList1 = new List<int>();
+            questionList2 = new List<int>();
+            questionList3 = new List<int>();
+            characterList = new List<string>();
             for(int i = 0; i < 6; i++)
             {
-                questionLevel1List1.Add(i+1);
-                questionLevel1List2.Add(i+1);
-                questionLevel1List3.Add(i+1);
-                characterLevel1List.Add("LR");
+                questionList1.Add(i+1);
+                questionList2.Add(i+1);
+                questionList3.Add(i+1);
+                characterList.Add("LR");
             }
-            listResetLevel1 = false;
+            listReset = false;
         }
 
         if(color1)
@@ -246,25 +246,22 @@ public class QuestionAndRecord : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(questionLevel1List1.Count == 0 && questionLevel1List2.Count == 0 && questionLevel1List3.Count == 0)
+        if(questionList1.Count == 0 && questionList2.Count == 0 && questionList3.Count == 0)
         {
-            questionLevel1List1 = new List<int>();
-            questionLevel1List2 = new List<int>();
-            questionLevel1List3 = new List<int>();
-            characterLevel1List = new List<string>();
+            questionList1 = new List<int>();
+            questionList2 = new List<int>();
+            questionList3 = new List<int>();
+            characterList = new List<string>();
             for(int i = 0; i < 6; i++)
             {
-                questionLevel1List1.Add(i+1);
-                questionLevel1List2.Add(i+1);
-                questionLevel1List3.Add(i+1);
-                characterLevel1List.Add("LR");
+                questionList1.Add(i+1);
+                questionList2.Add(i+1);
+                questionList3.Add(i+1);
+                characterList.Add("LR");
             }
         }
 
-        if(!CountDownController.isCountdownActive)
-        {
-            startKey = true;
-        }
+        startKey = AreaController.gameStart;
 
         if(startKey)
         {
@@ -276,28 +273,28 @@ public class QuestionAndRecord : MonoBehaviour
         }
     }
 
-    void Question()
+    /*void Question()
     {
-        if(questionLevel1List1.Count == 0 && questionLevel1List2.Count == 0 && questionLevel1List3.Count > 0)
+        if(questionList1.Count == 0 && questionList2.Count == 0 && questionList3.Count > 0)
         {
-            selectedQuestion = questionLevel1List3[UnityEngine.Random.Range(0, questionLevel1List3.Count)];
-            questionLevel1List3.Remove(selectedQuestion);
+            selectedQuestion = questionList3[UnityEngine.Random.Range(0, questionList3.Count)];
+            questionList3.Remove(selectedQuestion);
         }
-        else if(questionLevel1List1.Count == 0 && questionLevel1List2.Count > 0)
+        else if(questionList1.Count == 0 && questionList2.Count > 0)
         {
-            selectedQuestion = questionLevel1List2[UnityEngine.Random.Range(0, questionLevel1List2.Count)];
-            questionLevel1List2.Remove(selectedQuestion);
+            selectedQuestion = questionList2[UnityEngine.Random.Range(0, questionList2.Count)];
+            questionList2.Remove(selectedQuestion);
         }
-        else
+        else if 
         {
-            selectedQuestion = questionLevel1List1[UnityEngine.Random.Range(0, questionLevel1List1.Count)];
-            questionLevel1List1.Remove(selectedQuestion);
+            selectedQuestion = questionList1[UnityEngine.Random.Range(0, questionList1.Count)];
+            questionList1.Remove(selectedQuestion);
         }
 
         selectedPos = textPosList[selectedQuestion - 1];
-        selectedCharaNum = UnityEngine.Random.Range(0, characterLevel1List[selectedQuestion - 1].Length);
+        selectedCharaNum = UnityEngine.Random.Range(0, characterList[selectedQuestion - 1].Length);
 
-        if(characterLevel1List[selectedQuestion - 1].Substring(selectedCharaNum, 1) == "L")
+        if(characterList[selectedQuestion - 1].Substring(selectedCharaNum, 1) == "L")
         {
             imageL.GetComponent<RectTransform>().anchoredPosition = selectedPos;
             imageL.SetActive(true);
@@ -313,10 +310,86 @@ public class QuestionAndRecord : MonoBehaviour
         inQuestion = true;
         timeQuestion = Time.realtimeSinceStartup;
         Invoke("Disappearance", 2);
-        characterLevel1List[selectedQuestion - 1] = characterLevel1List[selectedQuestion - 1].Remove(selectedCharaNum, 1);
-        Debug.Log("abcde___" + characterLevel1List[selectedQuestion - 1].Length.ToString());
+        characterList[selectedQuestion - 1] = characterList[selectedQuestion - 1].Remove(selectedCharaNum, 1);
+        Debug.Log("abcde___" + characterList[selectedQuestion - 1].Length.ToString());
+        Debug.Log("abcde出題しました");
+    }*/
+    void Question()
+    {
+        // リストのサイズを確認する
+        Debug.Log("questionList1 size: " + questionList1.Count);
+        Debug.Log("questionList2 size: " + questionList2.Count);
+        Debug.Log("questionList3 size: " + questionList3.Count);
+        Debug.Log("textPosList size: " + textPosList.Count);
+        Debug.Log("characterList size: " + characterList.Count);
+
+        if (questionList1.Count == 0 && questionList2.Count == 0 && questionList3.Count > 0)
+        {
+            selectedQuestion = questionList3[UnityEngine.Random.Range(0, questionList3.Count)];
+            questionList3.Remove(selectedQuestion);
+        }
+        else if (questionList1.Count == 0 && questionList2.Count > 0)
+        {
+            selectedQuestion = questionList2[UnityEngine.Random.Range(0, questionList2.Count)];
+            questionList2.Remove(selectedQuestion);
+        }
+        else if (questionList1.Count > 0)
+        {
+            selectedQuestion = questionList1[UnityEngine.Random.Range(0, questionList1.Count)];
+            questionList1.Remove(selectedQuestion);
+        }
+        else
+        {
+            Debug.LogError("All question lists are empty.");
+            return;
+        }
+
+        Debug.Log("Selected Question: " + selectedQuestion);
+
+        // 範囲外でないかチェック
+        if (selectedQuestion - 1 >= 0 && selectedQuestion - 1 < textPosList.Count)
+        {
+            selectedPos = textPosList[selectedQuestion - 1];
+        }
+        else
+        {
+            Debug.LogError("selectedQuestion index is out of range for textPosList.");
+            Debug.LogError("selectedQuestion: " + selectedQuestion);
+            return;
+        }
+
+        if (selectedQuestion - 1 >= 0 && selectedQuestion - 1 < characterList.Count)
+        {
+            selectedCharaNum = UnityEngine.Random.Range(0, characterList[selectedQuestion - 1].Length);
+        }
+        else
+        {
+            Debug.LogError("selectedQuestion index is out of range for characterList.");
+            Debug.LogError("selectedQuestion: " + selectedQuestion);
+            return;
+        }
+
+        if (characterList[selectedQuestion - 1].Substring(selectedCharaNum, 1) == "L")
+        {
+            imageL.GetComponent<RectTransform>().anchoredPosition = selectedPos;
+            imageL.SetActive(true);
+            charaNow = "L";
+        }
+        else
+        {
+            imageR.GetComponent<RectTransform>().anchoredPosition = selectedPos;
+            imageR.SetActive(true);
+            charaNow = "R";
+        }
+
+        inQuestion = true;
+        timeQuestion = Time.realtimeSinceStartup;
+        Invoke("Disappearance", 2);
+        characterList[selectedQuestion - 1] = characterList[selectedQuestion - 1].Remove(selectedCharaNum, 1);
+        Debug.Log("abcde___" + characterList[selectedQuestion - 1].Length.ToString());
         Debug.Log("abcde出題しました");
     }
+
 
     void Disappearance()
     {

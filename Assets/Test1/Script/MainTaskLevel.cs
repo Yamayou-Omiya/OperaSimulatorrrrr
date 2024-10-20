@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainTaskLevel : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class MainTaskLevel : MonoBehaviour
     public static bool mainLevel3 = false;
     public static bool mainLevel4 = false;
     public static bool mainLevel5 = false;
+
+    public Text mainLevelText;
 
 
     // Start is called before the first frame update
@@ -30,6 +33,7 @@ public class MainTaskLevel : MonoBehaviour
         mainLevel3 = false;
         mainLevel4 = false;
         mainLevel5 = false;
+        mainLevelText.text = "1";
     }
     public void Button2Clicked()
     {
@@ -38,6 +42,7 @@ public class MainTaskLevel : MonoBehaviour
         mainLevel3 = false;
         mainLevel4 = false;
         mainLevel5 = false;
+        mainLevelText.text = "2";
     }
     public void Button3Clicked()
     {
@@ -46,6 +51,7 @@ public class MainTaskLevel : MonoBehaviour
         mainLevel3 = true;
         mainLevel4 = false;
         mainLevel5 = false;
+        mainLevelText.text = "3";
     }
     public void Button4Clicked()
     {
@@ -54,6 +60,7 @@ public class MainTaskLevel : MonoBehaviour
         mainLevel3 = false;
         mainLevel4 = true;
         mainLevel5 = false;
+        mainLevelText.text = "4";
     }
     public void Button5Clicked()
     {
@@ -62,5 +69,6 @@ public class MainTaskLevel : MonoBehaviour
         mainLevel3 = false;
         mainLevel4 = false;
         mainLevel5 = true;
+        mainLevelText.text = "5";
     }
 }

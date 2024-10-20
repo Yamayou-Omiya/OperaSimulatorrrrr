@@ -9,8 +9,8 @@ public class ObstacleGenerator : MonoBehaviour
     public GameObject[] obstacle;
 
     public float obstacleDiameter = 0.2f;
-    public float width = 5.2f;
-    public float height = 2.9f;
+    public float width = 5.15f;
+    public float height = 2.8f;
     private float x = 0;  
     private float z = 0;
     

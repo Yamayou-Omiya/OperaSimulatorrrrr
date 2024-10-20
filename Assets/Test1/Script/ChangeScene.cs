@@ -23,7 +23,7 @@ public class ChangeScene : MonoBehaviour
 
     public void DebugButtonClicked()
     {
-        SceneManager.LoadScene("TestScene2");
+        SceneManager.LoadScene("TestScene3");
     }
     public void StartButtonClicked()
     {
@@ -33,7 +33,7 @@ public class ChangeScene : MonoBehaviour
             {
                 if(ScreenPosition.screenPosition1||ScreenPosition.screenPosition2||ScreenPosition.screenPosition3||ScreenPosition.screenPositionFull)
                 {
-                    SceneManager.LoadScene("TestScene2");
+                    SceneManager.LoadScene("TestScene3");
                     start = true;
                 }
                 else

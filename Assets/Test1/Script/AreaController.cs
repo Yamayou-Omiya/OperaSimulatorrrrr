@@ -20,6 +20,8 @@ public class AreaController : MonoBehaviour
 
     public int sardineKey = 1;
     public int catchNum = 0;
+
+    public static bool gameStart = false;
     
     // Start is called before the first frame update
     void Start()
@@ -102,7 +104,15 @@ public class AreaController : MonoBehaviour
                     Destroy(sardine);
                     gameObject.GetComponent<Renderer>().material.color = Color.yellow;
                     sardineKey = 0;
-                    catchNum += 1;
+
+                    if(gameStart == false)
+                    {
+                        gameStart = true;
+                    }
+                    else
+                    {
+                        catchNum += 1;
+                    }
                 }
             }
         }

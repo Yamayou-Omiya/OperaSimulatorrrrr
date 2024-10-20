@@ -21,38 +21,40 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        second += Time.deltaTime;
-        if(second >= 60f)
+        if(AreaController.gameStart)
         {
-            minute++;
-            second = second - 60;
-        }
-        if((int)second != (int)pastSecond)
-        {
-            if(minute < 10)
+            second += Time.deltaTime;
+            if(second >= 60f)
             {
-                if((int)second < 10)
+                minute++;
+                second = second - 60;
+            }
+            if((int)second != (int)pastSecond)
+            {
+                if(minute < 10)
                 {
-                    timeText.text = "0" + minute + ":0" + (int)second;            
+                    if((int)second < 10)
+                    {
+                        timeText.text = "0" + minute + ":0" + (int)second;            
+                    }
+                    else
+                    {
+                        timeText.text = "0" + minute + ":" + (int)second;
+                    }
                 }
                 else
                 {
-                    timeText.text = "0" + minute + ":" + (int)second;
+                    if((int)second < 10)
+                    {
+                        timeText.text = minute + ":0" + (int)second;            
+                    }
+                    else
+                    {
+                        timeText.text = minute + ":" + (int)second;
+                    }
                 }
             }
-            else
-            {
-                if((int)second < 10)
-                {
-                    timeText.text = minute + ":0" + (int)second;            
-                }
-                else
-                {
-                    timeText.text = minute + ":" + (int)second;
-                }
-            }
+            pastSecond = second;
         }
-        pastSecond = second;
     }
-    
 }

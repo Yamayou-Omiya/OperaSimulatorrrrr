@@ -55,16 +55,19 @@ public class QuestionAndRecord : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*level1 = SubTaskLevel.subLevel1;
-        level2 = SubTaskLevel.subLevel2;
-        level3 = SubTaskLevel.subLevel3;
-        color1 = SubTaskColor.subColor1;
-        color2 = SubTaskColor.subColor2;
-        color3 = SubTaskColor.subColor3;
-        mainPos1 = ScreenPosition.screenPosition1;
-        mainPos2 = ScreenPosition.screenPosition2;
-        mainPos3 = ScreenPosition.screenPosition3;
-        mainPosFull = ScreenPosition.screenPositionFull;*/
+        if(ChangeScene.start)
+        {
+            level1 = SubTaskLevel.subLevel1;
+            level2 = SubTaskLevel.subLevel2;
+            level3 = SubTaskLevel.subLevel3;
+            color1 = SubTaskColor.subColor1;
+            color2 = SubTaskColor.subColor2;
+            color3 = SubTaskColor.subColor3;
+            mainPos1 = ScreenPosition.screenPosition1;
+            mainPos2 = ScreenPosition.screenPosition2;
+            mainPos3 = ScreenPosition.screenPosition3;
+            mainPosFull = ScreenPosition.screenPositionFull;
+        }
         
         for(int i = 0; i < 27; i++)
         {

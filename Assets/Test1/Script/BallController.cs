@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public Rigidbody rigidbody;
     public float ballDiameter = 0.2f;
     public Vector3 ballTransform = new Vector3(0.05f, 0f, 0.05f);
     public float speedX = 0.05f;

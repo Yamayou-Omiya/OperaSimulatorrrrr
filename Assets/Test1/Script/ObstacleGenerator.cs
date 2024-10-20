@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ObstacleGenerator : MonoBehaviour
 {
-    public Rigidbody rigidbody;
-
     public GameObject obstaclePrefab;
     public int obstacleNum = 0;
     public GameObject[] obstacle;

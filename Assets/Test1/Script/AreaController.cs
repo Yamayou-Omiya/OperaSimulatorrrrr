@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AreaController : MonoBehaviour
 {
-    public Rigidbody rigidbody;
     public SardineGenerator sarGen;
     public MainCameraController mainCamCnt;
     private Vector3 mouse;

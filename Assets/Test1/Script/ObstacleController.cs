@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
 {
-    public Rigidbody rigidbody;
     public ObstacleGenerator obsGen;
 
     public float obstacleDiameter = 0.2f;
-    public float width = 5.2f;
-    public float height = 2.9f;
+    private float width = 5.15f;
+    private float height = 2.8f;
 
     public int obsNum;
     private GameObject[] obs;
@@ -44,6 +43,8 @@ public class ObstacleController : MonoBehaviour
     void Update()
     {
         Move();
+        Vector3 posi = this.transform.position;
+        Reflection(posi);
     }
 
     private void SpeedSetting()
@@ -59,61 +60,60 @@ public class ObstacleController : MonoBehaviour
         this.transform.position += obstacleTransform * Time.deltaTime;
     }
     
-    private void OnCollisionEnter(Collision collision)
+    private void Reflection(Vector3 position)
     {
-        if(collision.gameObject.name == "Frame_R")
+        if(position.x >= width-obstacleDiameter/2)
         {
             obstacleTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
-            int dice = Random.Range(1, 3);
-            if(dice == 1)
+            int dice = Random.Range(1, 4);
+            if(dice <= 2)
             {
                 obstacleTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
             }
-            else if(dice == 2)
+            else if(dice == 3)
             {
                 obstacleTransform.z = Random.Range(speedZ, speedZ / 2);
             }     
         }
-        if(collision.gameObject.name == "Frame_L")
+        if(position.x <= -width+obstacleDiameter/2)
         {
             obstacleTransform.x = Random.Range(speedX / 2, speedX);
-            int dice = Random.Range(1, 3);
-            if(dice == 1)
+            int dice = Random.Range(1, 4);
+            if(dice <= 2)
             {
                 obstacleTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
             }
-            else if(dice == 2)
+            else if(dice == 3)
             {
                 obstacleTransform.z = Random.Range(speedZ, speedZ / 2);
             }     
         }
-        if(collision.gameObject.name == "Frame_U")
+        if(position.z >= height-obstacleDiameter/2)
         {
             obstacleTransform.z = Random.Range(-1 * speedZ, -1 * speedZ / 2);
-            int dice = Random.Range(1, 3);
-            if(dice == 1)
+            int dice = Random.Range(1, 4);
+            if(dice <= 2)
             {
                 obstacleTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
             }
-            else if(dice == 2)
+            else if(dice == 3)
             {
                 obstacleTransform.x = Random.Range(speedX, speedX / 2);
             }     
         }
-        if(collision.gameObject.name == "Frame_B")
+        if(position.z <= -height+obstacleDiameter/2)
         {
             obstacleTransform.z = Random.Range(speedZ / 2, speedZ);
-            int dice = Random.Range(1, 3);
-            if(dice == 1)
+            int dice = Random.Range(1, 4);
+            if(dice <= 2)
             {
                 obstacleTransform.x = Random.Range(-1 * speedX, -1 * speedX / 2);
             }
-            else if(dice == 2)
+            else if(dice == 3)
             {
                 obstacleTransform.x = Random.Range(speedX, speedX / 2);
             }     
         }
-
     }
 
     private void DiameterChanger(float newDiameter)

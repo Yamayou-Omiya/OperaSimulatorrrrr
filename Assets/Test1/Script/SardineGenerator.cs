@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SardineGenerator : MonoBehaviour
 {
-    public Rigidbody rigidbody;
     public AreaController areaCnt;
 
     public GameObject sardinePrefab;

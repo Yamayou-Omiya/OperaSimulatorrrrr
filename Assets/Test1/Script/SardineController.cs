@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SardineController : MonoBehaviour
 {
-    public Rigidbody rigitbody;
     public SardineGenerator sarGen;
     public Vector3 sardineTransform = new Vector3(1.0f, 0, 1.0f);
     private float deg = 0;

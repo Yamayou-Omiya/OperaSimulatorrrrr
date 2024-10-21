@@ -25,23 +25,23 @@ public class csvQuestionRecord : MonoBehaviour
         
     }
 
-    public void LeftAnswerRecord(string area, string question, string c, string ansState, string ansTime)
+    public void LeftAnswerRecord(string question, string c, string ansState, string ansTime)
     {
         if(IsCheck)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
-            string[] s1 = {timeNow.ToString(), area, "left", question, c, ansState, ansTime};
+            string[] s1 = {timeNow.ToString(), "left", question, c, ansState, ansTime};
             string s2 = string.Join(",", s1);
             sw.WriteLine(s2);
         }
     }
 
-    public void RightAnswerRecord(string area, string question, string c, string ansState, string ansTime)
+    public void RightAnswerRecord(string question, string c, string ansState, string ansTime)
     {
         if(IsCheck)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
-            string[] s1 = {timeNow.ToString(), area, "right", question, c, ansState, ansTime};
+            string[] s1 = {timeNow.ToString(), "right", question, c, ansState, ansTime};
             string s2 = string.Join(",", s1);
             sw.WriteLine(s2);
         }
@@ -58,7 +58,7 @@ public class csvQuestionRecord : MonoBehaviour
     public void MakeFile(string filename)
     {
         sw = new StreamWriter(@"Assets/ExperimentData/"+filename+"_question_record.csv", false, Encoding.UTF8);
-        string[] s1 = { "Time", "Area", "LorR", "Question", "Character", "Answer_State", "Answer_Time"};
+        string[] s1 = { "Time", "LorR", "Question", "Character", "Answer_State", "Answer_Time"};
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);
         IsCheck = true;

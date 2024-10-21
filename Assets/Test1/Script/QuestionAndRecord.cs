@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QuestionAndRecord : MonoBehaviour
 {
-    //GameObject csv_writer;
+    GameObject csvWriter;
     bool startKey = false;
     bool questionKey = true;
     bool inQuestion = false;
@@ -77,7 +77,7 @@ public class QuestionAndRecord : MonoBehaviour
             }
         }
 
-        //csv_writer = GameObject.Find("CSV writer");
+        csvWriter = GameObject.Find("CSV Writer");
 
         if(listReset)
         {
@@ -397,7 +397,7 @@ public class QuestionAndRecord : MonoBehaviour
     void Disappearance()
     {
         timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-        //csv_writer.GetComponent<csv_character_pop>().RightAnswerRecord(ope_state.ToString(), selectedQuestion.ToString(), charaNow, "ignored", timeAnswer.ToString());
+        csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord(selectedQuestion.ToString(), charaNow, "ignored", timeAnswer.ToString());
         if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
         {
             allAnsTime[selectedQuestion - 1, 0] = 4.0f;
@@ -426,7 +426,7 @@ public class QuestionAndRecord : MonoBehaviour
         if(!inQuestion)
         {
             // 勝手に押した
-            //csv_writer.GetComponent<csv_character_pop>().LeftAnswerRecord("9999","9999","xx", "irrelevant_answer", "9999");
+            csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord("9999", "xx", "irrelevant_answer", "9999");
         }
         else
         {
@@ -434,7 +434,7 @@ public class QuestionAndRecord : MonoBehaviour
             {
                 // 正答
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                //csv_writer.GetComponent<csv_character_pop>().LeftAnswerRecord(ope_state.ToString(), selectedQuestion.ToString(), "H", "correct", timeAnswer.ToString());
+                csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord(selectedQuestion.ToString(), "L", "correct", timeAnswer.ToString());
                 if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
                 {
                     allAnsTime[selectedQuestion - 1, 0] = timeAnswer;
@@ -463,7 +463,7 @@ public class QuestionAndRecord : MonoBehaviour
             {
                 // 文字の見間違え
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                //csv_writer.GetComponent<csv_character_pop>().LeftAnswerRecord(ope_state.ToString(), selectedQuestion.ToString(), "N","character_mistake", timeAnswer.ToString());
+                csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord(selectedQuestion.ToString(), "R", "character_mistake", timeAnswer.ToString());
                 if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
                 {
                     allAnsTime[selectedQuestion - 1, 0] = 4.0f;
@@ -496,7 +496,7 @@ public class QuestionAndRecord : MonoBehaviour
         if(!inQuestion)
         {
             // 勝手に押した
-            //csv_writer.GetComponent<csv_character_pop>().RightAnswerRecord("9999", "9999", "xxx", "irrelevant_answer", "9999");
+            csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord("9999", "xxx", "irrelevant_answer", "9999");
         }
         else
         {
@@ -504,7 +504,7 @@ public class QuestionAndRecord : MonoBehaviour
             {
                 // 正答
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                //csv_writer.GetComponent<csv_character_pop>().RightAnswerRecord(ope_state.ToString(), selectedQuestion.ToString(), "N", "correct", timeAnswer.ToString());
+                csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord(selectedQuestion.ToString(), "R", "correct", timeAnswer.ToString());
                 if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
                 {
                     allAnsTime[selectedQuestion - 1, 0] = timeAnswer;
@@ -533,7 +533,7 @@ public class QuestionAndRecord : MonoBehaviour
             {
                 // 文字の見間違え
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                //csv_writer.GetComponent<csv_character_pop>().RightAnswerRecord(ope_state.ToString(), selectedQuestion.ToString(), "H", "character_mistake", timeAnswer.ToString());
+                csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord(selectedQuestion.ToString(), "L", "character_mistake", timeAnswer.ToString());
                 if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
                 {
                     allAnsTime[selectedQuestion - 1, 0] = 4.0f;

@@ -11,6 +11,7 @@ public class csvStart : MonoBehaviour
     private StreamWriter sw;
     private float timeNow;
     private float timeStart;
+    bool IsCheck = false;
     
     // Start is called before the first frame update
     void Start()
@@ -30,5 +31,25 @@ public class csvStart : MonoBehaviour
         string[] s1 = {"time"};
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);
+        IsCheck = true;
+    }
+
+    public void StartCheck()
+    {
+        if(IsCheck)
+        {
+            timeNow = Time.realtimeSinceStartup - timeStart;
+            string[] s1 = {timeNow.ToString()};
+            string s2 = string.Join(",", s1);
+            sw.WriteLine(s2);
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        if(IsCheck)
+        {
+            sw.Close();
+        }
     }
 }

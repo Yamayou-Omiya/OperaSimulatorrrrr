@@ -646,6 +646,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 378236248}
+  - component: {fileID: 378236249}
   m_Layer: 0
   m_Name: CSV Writer
   m_TagString: Untagged
@@ -668,6 +669,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &378236249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378236247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebeea743260cd9e479ef397c1d590e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &395938557
 GameObject:
   m_ObjectHideFlags: 0
@@ -3201,6 +3214,22 @@ PrefabInstance:
     - target: {fileID: 5265588924907140204, guid: 50f15c229c667ab4992375ec759e9e71, type: 3}
       propertyPath: height
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265588924907140204, guid: 50f15c229c667ab4992375ec759e9e71, type: 3}
+      propertyPath: speedX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265588924907140204, guid: 50f15c229c667ab4992375ec759e9e71, type: 3}
+      propertyPath: speedZ
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265588924907140204, guid: 50f15c229c667ab4992375ec759e9e71, type: 3}
+      propertyPath: sardineTransform.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265588924907140204, guid: 50f15c229c667ab4992375ec759e9e71, type: 3}
+      propertyPath: sardineTransform.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6774064494374159826, guid: 50f15c229c667ab4992375ec759e9e71, type: 3}
       propertyPath: m_RootOrder

@@ -1317,7 +1317,7 @@ MonoBehaviour:
   mainPos2: 1
   mainPos3: 0
   mainPosFull: 0
-  listReset: 0
+  listReset: 1
   questionList1: 
   questionList2: 
   questionList3: 

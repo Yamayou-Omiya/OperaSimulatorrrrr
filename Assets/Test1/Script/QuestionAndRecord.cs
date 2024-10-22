@@ -251,17 +251,7 @@ public class QuestionAndRecord : MonoBehaviour
     {
         if(questionList1.Count == 0 && questionList2.Count == 0 && questionList3.Count == 0)
         {
-            questionList1 = new List<int>();
-            questionList2 = new List<int>();
-            questionList3 = new List<int>();
-            characterList = new List<string>();
-            for(int i = 0; i < 6; i++)
-            {
-                questionList1.Add(i+1);
-                questionList2.Add(i+1);
-                questionList3.Add(i+1);
-                characterList.Add("LR");
-            }
+            ResetLists();
         }
 
         if(startKey)
@@ -274,56 +264,27 @@ public class QuestionAndRecord : MonoBehaviour
         }
     }
 
-    /*void Question()
-    {
-        if(questionList1.Count == 0 && questionList2.Count == 0 && questionList3.Count > 0)
-        {
-            selectedQuestion = questionList3[UnityEngine.Random.Range(0, questionList3.Count)];
-            questionList3.Remove(selectedQuestion);
-        }
-        else if(questionList1.Count == 0 && questionList2.Count > 0)
-        {
-            selectedQuestion = questionList2[UnityEngine.Random.Range(0, questionList2.Count)];
-            questionList2.Remove(selectedQuestion);
-        }
-        else if 
-        {
-            selectedQuestion = questionList1[UnityEngine.Random.Range(0, questionList1.Count)];
-            questionList1.Remove(selectedQuestion);
-        }
-
-        selectedPos = textPosList[selectedQuestion - 1];
-        selectedCharaNum = UnityEngine.Random.Range(0, characterList[selectedQuestion - 1].Length);
-
-        if(characterList[selectedQuestion - 1].Substring(selectedCharaNum, 1) == "L")
-        {
-            imageL.GetComponent<RectTransform>().anchoredPosition = selectedPos;
-            imageL.SetActive(true);
-            charaNow = "L";
-        }
-        else
-        {
-            imageR.GetComponent<RectTransform>().anchoredPosition = selectedPos;
-            imageR.SetActive(true);
-            charaNow = "R";
-        }
-
-        inQuestion = true;
-        timeQuestion = Time.realtimeSinceStartup;
-        Invoke("Disappearance", 2);
-        characterList[selectedQuestion - 1] = characterList[selectedQuestion - 1].Remove(selectedCharaNum, 1);
-        Debug.Log("abcde___" + characterList[selectedQuestion - 1].Length.ToString());
-        Debug.Log("abcde出題しました");
-    }*/
     void Question()
     {
-        // リストのサイズを確認する
+        // リストのサイズと内容を確認
         Debug.Log("questionList1 size: " + questionList1.Count);
         Debug.Log("questionList2 size: " + questionList2.Count);
         Debug.Log("questionList3 size: " + questionList3.Count);
         Debug.Log("textPosList size: " + textPosList.Count);
         Debug.Log("characterList size: " + characterList.Count);
 
+        // characterListの状態をチェック
+        for (int i = 0; i < characterList.Count; i++)
+        {
+            if (string.IsNullOrEmpty(characterList[i]))
+            {
+                // 空の文字列があれば"LR"にリセット
+                characterList[i] = "LR";
+                Debug.Log($"Reset empty character string at index {i}");
+            }
+        }
+
+        // 質問を選択
         if (questionList1.Count == 0 && questionList2.Count == 0 && questionList3.Count > 0)
         {
             selectedQuestion = questionList3[UnityEngine.Random.Range(0, questionList3.Count)];
@@ -342,35 +303,39 @@ public class QuestionAndRecord : MonoBehaviour
         else
         {
             Debug.LogError("All question lists are empty.");
+            // すべてのリストをリセット
+            ResetLists();
             return;
         }
 
         Debug.Log("Selected Question: " + selectedQuestion);
 
-        // 範囲外でないかチェック
-        if (selectedQuestion - 1 >= 0 && selectedQuestion - 1 < textPosList.Count)
+        // インデックスの範囲チェック
+        if (selectedQuestion - 1 < 0 || selectedQuestion - 1 >= textPosList.Count)
         {
-            selectedPos = textPosList[selectedQuestion - 1];
-        }
-        else
-        {
-            Debug.LogError("selectedQuestion index is out of range for textPosList.");
-            Debug.LogError("selectedQuestion: " + selectedQuestion);
+            Debug.LogError($"selectedQuestion index ({selectedQuestion - 1}) is out of range for textPosList.");
             return;
         }
 
-        if (selectedQuestion - 1 >= 0 && selectedQuestion - 1 < characterList.Count)
+        if (selectedQuestion - 1 < 0 || selectedQuestion - 1 >= characterList.Count)
         {
-            selectedCharaNum = UnityEngine.Random.Range(0, characterList[selectedQuestion - 1].Length);
-        }
-        else
-        {
-            Debug.LogError("selectedQuestion index is out of range for characterList.");
-            Debug.LogError("selectedQuestion: " + selectedQuestion);
+            Debug.LogError($"selectedQuestion index ({selectedQuestion - 1}) is out of range for characterList.");
             return;
         }
 
-        if (characterList[selectedQuestion - 1].Substring(selectedCharaNum, 1) == "L")
+        // 文字列の長さチェック
+        string currentCharacters = characterList[selectedQuestion - 1];
+        if (string.IsNullOrEmpty(currentCharacters))
+        {
+            Debug.LogError($"Character string is empty for question {selectedQuestion}. Resetting character options.");
+            characterList[selectedQuestion - 1] = "LR"; // 空の場合はリセット
+            currentCharacters = "LR";
+        }
+
+        selectedPos = textPosList[selectedQuestion - 1];
+        selectedCharaNum = UnityEngine.Random.Range(0, currentCharacters.Length);
+
+        if (currentCharacters[selectedCharaNum] == 'L')
         {
             imageL.GetComponent<RectTransform>().anchoredPosition = selectedPos;
             imageL.SetActive(true);
@@ -386,11 +351,28 @@ public class QuestionAndRecord : MonoBehaviour
         inQuestion = true;
         timeQuestion = Time.realtimeSinceStartup;
         Invoke("Disappearance", 2);
-        characterList[selectedQuestion - 1] = characterList[selectedQuestion - 1].Remove(selectedCharaNum, 1);
-        Debug.Log("abcde___" + characterList[selectedQuestion - 1].Length.ToString());
-        Debug.Log("abcde出題しました");
+        
+        // 文字列の更新
+        characterList[selectedQuestion - 1] = currentCharacters.Remove(selectedCharaNum, 1);
+        Debug.Log($"Question {selectedQuestion}: Characters remaining: {characterList[selectedQuestion - 1]}");
     }
 
+    private void ResetLists()
+    {
+        questionList1.Clear();
+        questionList2.Clear();
+        questionList3.Clear();
+        characterList.Clear();
+
+        for(int i = 0; i < 6; i++)
+        {
+            questionList1.Add(i+1);
+            questionList2.Add(i+1);
+            questionList3.Add(i+1);
+            characterList.Add("LR");
+        }
+        Debug.Log("All lists have been reset");
+    }
 
     void Disappearance()
     {

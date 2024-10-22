@@ -42,19 +42,195 @@ public class AreaController : MonoBehaviour
             mouse = Input.mousePosition;
             if(mainCamCnt.Cam0)
             {
-                this.transform.position = new Vector3((mouse.x - 960)/(960/5.2f), 0, (mouse.y - 540)/(540/2.9f));
+                if(mouse.x > 1920)
+                {
+                    if(mouse.y > 1080)
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, 3.0f); 
+                    }
+                    else if(mouse.y < 0)
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, (mouse.y - 540)/(540/3.0f)); 
+                    }                   
+                }
+                else if(mouse.x < 0)
+                {
+                    if(mouse.y > 1080)
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, 3.0f); 
+                    }
+                    else if(mouse.y < 0)
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, (mouse.y - 540)/(540/3.0f)); 
+                    }
+                }
+                else
+                {
+                    if(mouse.y > 1080)
+                    {
+                        this.transform.position = new Vector3((mouse.x - 960)/(960/5.233f), 0, 3.0f); 
+                    }
+                    else if(mouse.y < 0)
+                    {
+                        this.transform.position = new Vector3((mouse.x - 960)/(960/5.233f), 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3((mouse.x - 960)/(960/5.233f), 0, (mouse.y - 540)/(540/3.0f)); 
+                    }
+                }
             }
             else if(mainCamCnt.Cam1)
             {
-                this.transform.position = new Vector3((mouse.x - 480)/(960/10.4f), 0, (mouse.y - 810)/(540/5.8f));
+                if(mouse.x > 960)
+                {
+                    if(mouse.y > 1080)
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, 3.0f); 
+                    }
+                    else if(mouse.y < 540)
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, (mouse.y - 810)/(540/6.0f)); 
+                    }                   
+                }
+                else if(mouse.x < 0)
+                {
+                    if(mouse.y > 1080)
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, 3.0f); 
+                    }
+                    else if(mouse.y < 540)
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, (mouse.y - 810)/(540/6.0f)); 
+                    }
+                }
+                else
+                {
+                    if(mouse.y > 1080)
+                    {
+                        this.transform.position = new Vector3((mouse.x - 480)/(960/10.467f), 0, 3.0f); 
+                    }
+                    else if(mouse.y < 540)
+                    {
+                        this.transform.position = new Vector3((mouse.x - 480)/(960/10.467f), 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3((mouse.x - 480)/(960/10.467f), 0, (mouse.y - 810)/(540/6.0f)); 
+                    }
+                }
             }
             else if(mainCamCnt.Cam2)
             {
-                this.transform.position = new Vector3((mouse.x - 1440)/(960/10.4f), 0, (mouse.y - 810)/(540/5.8f));
+                if(mouse.x > 1920)
+                {
+                    if(mouse.y > 1080)
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, 3.0f); 
+                    }
+                    else if(mouse.y < 540)
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, (mouse.y - 810)/(540/6.0f)); 
+                    }                   
+                }
+                else if(mouse.x < 960)
+                {
+                    if(mouse.y > 1080)
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, 3.0f); 
+                    }
+                    else if(mouse.y < 540)
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, (mouse.y - 810)/(540/6.0f)); 
+                    }
+                }
+                else
+                {
+                    if(mouse.y > 1080)
+                    {
+                        this.transform.position = new Vector3((mouse.x - 1440)/(960/10.467f), 0, 3.0f); 
+                    }
+                    else if(mouse.y < 540)
+                    {
+                        this.transform.position = new Vector3((mouse.x - 1440)/(960/10.467f), 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3((mouse.x - 1440)/(960/10.467f), 0, (mouse.y - 810)/(540/6.0f));
+                    }
+                }                
             }
             else if(mainCamCnt.Cam3)
             {
-                this.transform.position = new Vector3((mouse.x - 960)/(960/10.4f), 0, (mouse.y - 270)/(540/5.8f));
+                if(mouse.x > 1440)
+                {
+                    if(mouse.y > 540)
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, 3.0f); 
+                    }
+                    else if(mouse.y < 0)
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3(5.233f, 0, (mouse.y - 270)/(540/6.0f)); 
+                    }                   
+                }
+                else if(mouse.x < 480)
+                {
+                    if(mouse.y > 540)
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, 3.0f); 
+                    }
+                    else if(mouse.y < 0)
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3(-5.233f, 0, (mouse.y - 270)/(540/6.0f)); 
+                    }
+                }
+                else
+                {
+                    if(mouse.y > 540)
+                    {
+                        this.transform.position = new Vector3((mouse.x - 960)/(960/10.467f), 0, 3.0f); 
+                    }
+                    else if(mouse.y < 0)
+                    {
+                        this.transform.position = new Vector3((mouse.x - 960)/(960/10.467f), 0, -3.0f); 
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector3((mouse.x - 960)/(960/10.467f), 0, (mouse.y - 270)/(540/6.0f));
+                    }
+                }                
             }
         }
 
@@ -114,7 +290,7 @@ public class AreaController : MonoBehaviour
                     else
                     {
                         catchNum += 1;
-                        csvWriter.GetComponent<csvCatch>().CountCatchAmount();
+                        csvWriter.GetComponent<csvCatch>().Catch(catchNum.ToString(), areaDiameter.ToString(), this.transform.position.x.ToString(), this.transform.position.z.ToString(), sardine.transform.position.x.ToString(), sardine.transform.position.z.ToString());
                     }
                 }
             }

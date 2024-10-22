@@ -49,11 +49,11 @@ public class csvCatch : MonoBehaviour
         }
     }
 
-    public void CountCatchAmount()
+    /*public void CountCatchAmount()
     {
         catchAmount++;
         check = true;
-    }
+    }*/
 
     private void OnApplicationQuit()
     {
@@ -63,10 +63,21 @@ public class csvCatch : MonoBehaviour
         }
     }
 
+    public void Catch(string catchNum, string areaDiameter, string areaPosX, string areaPosZ, string sardinePosX, string sardinePosZ)
+    {
+        if(IsCheck)
+        {
+            timeNow = Time.realtimeSinceStartup - timeStart;
+            string[] s1 = {timeNow.ToString(), catchNum, areaDiameter, areaPosX, areaPosZ, sardinePosX, sardinePosZ};
+            string s2 = string.Join(",", s1);
+            sw.WriteLine(s2);
+        }
+    }
+
     public void MakeFile(string filename)
     {
         sw = new StreamWriter(@"Assets/ExperimentData/"+filename+"_catch_amount.csv", false, Encoding.UTF8);
-        string[] s1 = { "time", "catch_amount"};
+        string[] s1 = { "time", "catch_amount", "area_diameter", "area_pos.x", "area_pos.z", "sardine_pos.x", "sardine_pos.z" };
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);
         IsCheck = true;

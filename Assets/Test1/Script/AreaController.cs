@@ -10,6 +10,7 @@ public class AreaController : MonoBehaviour
     private Vector3 mouse;
     [SerializeField] GameObject target;
     public GameObject sardine;
+    public float areaSpeed = 1.5f;
     public float areaDiameter = 1.0f;
     [SerializeField] bool mouseControl;
     [SerializeField] bool controllerControl;
@@ -39,199 +40,11 @@ public class AreaController : MonoBehaviour
         sardine = sarGen.sardine;
         if(mouseControl)
         {
-            mouse = Input.mousePosition;
-            if(mainCamCnt.Cam0)
-            {
-                if(mouse.x > 1920)
-                {
-                    if(mouse.y > 1080)
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, 3.0f); 
-                    }
-                    else if(mouse.y < 0)
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, (mouse.y - 540)/(540/3.0f)); 
-                    }                   
-                }
-                else if(mouse.x < 0)
-                {
-                    if(mouse.y > 1080)
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, 3.0f); 
-                    }
-                    else if(mouse.y < 0)
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, (mouse.y - 540)/(540/3.0f)); 
-                    }
-                }
-                else
-                {
-                    if(mouse.y > 1080)
-                    {
-                        this.transform.position = new Vector3((mouse.x - 960)/(960/5.233f), 0, 3.0f); 
-                    }
-                    else if(mouse.y < 0)
-                    {
-                        this.transform.position = new Vector3((mouse.x - 960)/(960/5.233f), 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3((mouse.x - 960)/(960/5.233f), 0, (mouse.y - 540)/(540/3.0f)); 
-                    }
-                }
-            }
-            else if(mainCamCnt.Cam1)
-            {
-                if(mouse.x > 960)
-                {
-                    if(mouse.y > 1080)
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, 3.0f); 
-                    }
-                    else if(mouse.y < 540)
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, (mouse.y - 810)/(540/6.0f)); 
-                    }                   
-                }
-                else if(mouse.x < 0)
-                {
-                    if(mouse.y > 1080)
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, 3.0f); 
-                    }
-                    else if(mouse.y < 540)
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, (mouse.y - 810)/(540/6.0f)); 
-                    }
-                }
-                else
-                {
-                    if(mouse.y > 1080)
-                    {
-                        this.transform.position = new Vector3((mouse.x - 480)/(960/10.467f), 0, 3.0f); 
-                    }
-                    else if(mouse.y < 540)
-                    {
-                        this.transform.position = new Vector3((mouse.x - 480)/(960/10.467f), 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3((mouse.x - 480)/(960/10.467f), 0, (mouse.y - 810)/(540/6.0f)); 
-                    }
-                }
-            }
-            else if(mainCamCnt.Cam2)
-            {
-                if(mouse.x > 1920)
-                {
-                    if(mouse.y > 1080)
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, 3.0f); 
-                    }
-                    else if(mouse.y < 540)
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, (mouse.y - 810)/(540/6.0f)); 
-                    }                   
-                }
-                else if(mouse.x < 960)
-                {
-                    if(mouse.y > 1080)
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, 3.0f); 
-                    }
-                    else if(mouse.y < 540)
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, (mouse.y - 810)/(540/6.0f)); 
-                    }
-                }
-                else
-                {
-                    if(mouse.y > 1080)
-                    {
-                        this.transform.position = new Vector3((mouse.x - 1440)/(960/10.467f), 0, 3.0f); 
-                    }
-                    else if(mouse.y < 540)
-                    {
-                        this.transform.position = new Vector3((mouse.x - 1440)/(960/10.467f), 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3((mouse.x - 1440)/(960/10.467f), 0, (mouse.y - 810)/(540/6.0f));
-                    }
-                }                
-            }
-            else if(mainCamCnt.Cam3)
-            {
-                if(mouse.x > 1440)
-                {
-                    if(mouse.y > 540)
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, 3.0f); 
-                    }
-                    else if(mouse.y < 0)
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3(5.233f, 0, (mouse.y - 270)/(540/6.0f)); 
-                    }                   
-                }
-                else if(mouse.x < 480)
-                {
-                    if(mouse.y > 540)
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, 3.0f); 
-                    }
-                    else if(mouse.y < 0)
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3(-5.233f, 0, (mouse.y - 270)/(540/6.0f)); 
-                    }
-                }
-                else
-                {
-                    if(mouse.y > 540)
-                    {
-                        this.transform.position = new Vector3((mouse.x - 960)/(960/10.467f), 0, 3.0f); 
-                    }
-                    else if(mouse.y < 0)
-                    {
-                        this.transform.position = new Vector3((mouse.x - 960)/(960/10.467f), 0, -3.0f); 
-                    }
-                    else
-                    {
-                        this.transform.position = new Vector3((mouse.x - 960)/(960/10.467f), 0, (mouse.y - 270)/(540/6.0f));
-                    }
-                }                
-            }
+            MouseController();
+        }
+        else if(controllerControl)
+        {
+            ControllerControl();
         }
 
         if(sardineKey == 0)
@@ -243,6 +56,255 @@ public class AreaController : MonoBehaviour
         ColorCheck();
     }       
 
+    private void MouseController()
+    {
+        mouse = Input.mousePosition;
+        if(mainCamCnt.Cam0)
+        {
+            if(mouse.x > 1920)
+            {
+                if(mouse.y > 1080)
+                {
+                    this.transform.position = new Vector3(5.333f, 0, 3.0f); 
+                }
+                else if(mouse.y < 0)
+                {
+                    this.transform.position = new Vector3(5.333f, 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3(5.333f, 0, (mouse.y - 540)/(540/3.0f)); 
+                }                   
+            }
+            else if(mouse.x < 0)
+            {
+                if(mouse.y > 1080)
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, 3.0f); 
+                }
+                else if(mouse.y < 0)
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, (mouse.y - 540)/(540/3.0f)); 
+                }
+            }
+            else
+            {
+                if(mouse.y > 1080)
+                {
+                    this.transform.position = new Vector3((mouse.x - 960)/(960/5.333f), 0, 3.0f); 
+                }
+                else if(mouse.y < 0)
+                {
+                    this.transform.position = new Vector3((mouse.x - 960)/(960/5.333f), 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3((mouse.x - 960)/(960/5.333f), 0, (mouse.y - 540)/(540/3.0f)); 
+                }
+            }
+        }
+        else if(mainCamCnt.Cam1)
+        {
+            if(mouse.x > 960)
+            {
+                if(mouse.y > 1080)
+                {
+                    this.transform.position = new Vector3(5.333f, 0, 3.0f); 
+                }
+                else if(mouse.y < 540)
+                {
+                    this.transform.position = new Vector3(5.333f, 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3(5.333f, 0, (mouse.y - 810)/(540/6.0f)); 
+                }                   
+            }
+            else if(mouse.x < 0)
+            {
+                if(mouse.y > 1080)
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, 3.0f); 
+                }
+                else if(mouse.y < 540)
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, (mouse.y - 810)/(540/6.0f)); 
+                }
+            }
+            else
+            {
+                if(mouse.y > 1080)
+                {
+                    this.transform.position = new Vector3((mouse.x - 480)/(960/10.667f), 0, 3.0f); 
+                }
+                else if(mouse.y < 540)
+                {
+                    this.transform.position = new Vector3((mouse.x - 480)/(960/10.667f), 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3((mouse.x - 480)/(960/10.667f), 0, (mouse.y - 810)/(540/6.0f)); 
+                }
+            }
+        }
+        else if(mainCamCnt.Cam2)
+        {
+            if(mouse.x > 1920)
+            {
+                if(mouse.y > 1080)
+                {
+                    this.transform.position = new Vector3(5.333f, 0, 3.0f); 
+                }
+                else if(mouse.y < 540)
+                {
+                    this.transform.position = new Vector3(5.333f, 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3(5.333f, 0, (mouse.y - 810)/(540/6.0f)); 
+                }                   
+            }
+            else if(mouse.x < 960)
+            {
+                if(mouse.y > 1080)
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, 3.0f); 
+                }
+                else if(mouse.y < 540)
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, (mouse.y - 810)/(540/6.0f)); 
+                }
+            }
+            else
+            {
+                if(mouse.y > 1080)
+                {
+                    this.transform.position = new Vector3((mouse.x - 1440)/(960/10.667f), 0, 3.0f); 
+                }
+                else if(mouse.y < 540)
+                {
+                    this.transform.position = new Vector3((mouse.x - 1440)/(960/10.667f), 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3((mouse.x - 1440)/(960/10.667f), 0, (mouse.y - 810)/(540/6.0f));
+                }
+            }                
+        }
+        else if(mainCamCnt.Cam3)
+        {
+            if(mouse.x > 1440)
+            {
+                if(mouse.y > 540)
+                {
+                    this.transform.position = new Vector3(5.333f, 0, 3.0f); 
+                }
+                else if(mouse.y < 0)
+                {
+                    this.transform.position = new Vector3(5.333f, 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3(5.333f, 0, (mouse.y - 270)/(540/6.0f)); 
+                }                   
+            }
+            else if(mouse.x < 480)
+            {
+                if(mouse.y > 540)
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, 3.0f); 
+                }
+                else if(mouse.y < 0)
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3(-5.333f, 0, (mouse.y - 270)/(540/6.0f)); 
+                }
+            }
+            else
+            {
+                if(mouse.y > 540)
+                {
+                    this.transform.position = new Vector3((mouse.x - 960)/(960/10.667f), 0, 3.0f); 
+                }
+                else if(mouse.y < 0)
+                {
+                    this.transform.position = new Vector3((mouse.x - 960)/(960/10.667f), 0, -3.0f); 
+                }
+                else
+                {
+                    this.transform.position = new Vector3((mouse.x - 960)/(960/10.667f), 0, (mouse.y - 270)/(540/6.0f));
+                }
+            }                
+        }
+    }
+
+    private void ControllerControl()
+    {
+        if(this.transform.position.x > 5.333f)
+        {
+            if(this.transform.position.z > 3.0f)
+            {
+                this.transform.position = new Vector3(5.333f, 0, 3.0f); 
+            }
+            else if(this.transform.position.z < -3.0f)
+            {
+                this.transform.position = new Vector3(5.333f, 0, -3.0f); 
+            }
+            else
+            {
+                this.transform.position += new Vector3(0, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime); 
+            }
+        }
+        else if(this.transform.position.x < -5.333f)
+        {
+            if(this.transform.position.z > 3.0f)
+            {
+                this.transform.position = new Vector3(-5.333f, 0, 3.0f); 
+            }
+            else if(this.transform.position.z < -3.0f)
+            {
+                this.transform.position = new Vector3(-5.333f, 0, -3.0f); 
+            }
+            else
+            {
+                this.transform.position += new Vector3(0, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime); 
+            }
+        }
+        else
+        {
+            if(this.transform.position.z > 3.0f)
+            {
+                this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, 0); 
+            }
+            else if(this.transform.position.z < -3.0f)
+            {
+                this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, 0); 
+            }
+            else
+            {
+                this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime); 
+            }
+        }
+        
+        //Debug.Log("h__" + Input.GetAxis("Joystick1Horizontal1"));
+        //Debug.Log("v__" + Input.GetAxis("Joystick1Vertical1"));
+    }
+    
     private Color ColorChanger()
     {
         float xDistance = sardine.transform.position.x - this.transform.position.x;

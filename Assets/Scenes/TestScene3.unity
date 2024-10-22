@@ -4578,8 +4578,8 @@ MonoBehaviour:
   target: {fileID: 1685372100}
   sardine: {fileID: 804276318}
   areaDiameter: 1
-  mouseControl: 1
-  controllerControl: 0
+  mouseControl: 0
+  controllerControl: 1
   requiredStayTime: 2
   targetObject: {fileID: 804276318}
   sardineKey: 1

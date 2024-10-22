@@ -4577,6 +4577,7 @@ MonoBehaviour:
   mainCamCnt: {fileID: 0}
   target: {fileID: 1685372100}
   sardine: {fileID: 804276318}
+  areaSpeed: 2
   areaDiameter: 1
   mouseControl: 0
   controllerControl: 1

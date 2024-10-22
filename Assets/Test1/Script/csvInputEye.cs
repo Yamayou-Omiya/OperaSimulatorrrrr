@@ -15,6 +15,7 @@ public class csvInputEye : MonoBehaviour
 
     Vector2 filteredPos;
     bool IsCheck = false;
+    bool IsFileMade = false;
     
     // Start is called before the first frame update
     void Start()
@@ -29,19 +30,28 @@ public class csvInputEye : MonoBehaviour
 
         timeNow = Time.realtimeSinceStartup - timeStart;
 
-        if(gazePoint.IsRecent())
+        if(!IsFileMade)
         {
-            Vector2 gazePos = gazePoint.Screen;
-            filteredPos = Vector2.Lerp(filteredPos, gazePos, 0.5f);
-            string[] s1 = {timeNow.ToString(), "1", gazePos.x.ToString(), gazePos.y.ToString(), filteredPos.x.ToString(), filteredPos.y.ToString()};
-            string s2 = string.Join(",", s1);
-            sw.WriteLine(s2);
+            MakeFile(FilenameLoad.filename);
+            IsFileMade = true;
         }
-        else
+
+        if(IsCheck)
         {
-            string[] s1 = {timeNow.ToString(), "0", "NN", "NN", "NN", "NN"};
-            string s2 = string.Join(",", s1);
-            sw.WriteLine(s2);
+            /*if(gazePoint.IsRecent())
+            {*/
+                Vector2 gazePos = gazePoint.Screen;
+                filteredPos = Vector2.Lerp(filteredPos, gazePos, 0.5f);
+                string[] s1 = {timeNow.ToString(), "1", gazePos.x.ToString(), gazePos.y.ToString(), filteredPos.x.ToString(), filteredPos.y.ToString()};
+                string s2 = string.Join(",", s1);
+                sw.WriteLine(s2);
+            /*}
+            else
+            {
+                string[] s1 = {timeNow.ToString(), "0", "NN", "NN", "NN", "NN"};
+                string s2 = string.Join(",", s1);
+                sw.WriteLine(s2);
+            }*/
         }
     }
 

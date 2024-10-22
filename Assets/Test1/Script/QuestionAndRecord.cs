@@ -264,8 +264,6 @@ public class QuestionAndRecord : MonoBehaviour
             }
         }
 
-        startKey = AreaController.gameStart;
-
         if(startKey)
         {
             if(questionKey && !inQuestion) // "出題可能" かつ "出題中ではない"
@@ -397,7 +395,6 @@ public class QuestionAndRecord : MonoBehaviour
     void Disappearance()
     {
         timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-        //csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord(selectedQuestion.ToString(), charaNow, "ignored", timeAnswer.ToString());
         if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
         {
             allAnsTime[selectedQuestion - 1, 0] = 4.0f;
@@ -426,7 +423,7 @@ public class QuestionAndRecord : MonoBehaviour
         if(!inQuestion)
         {
             // 勝手に押した
-            //csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord("9999", "xx", "irrelevant_answer", "9999");
+            csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord("9999", "xx", "irrelevant_answer", "9999");
         }
         else
         {
@@ -434,7 +431,7 @@ public class QuestionAndRecord : MonoBehaviour
             {
                 // 正答
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                //csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord(selectedQuestion.ToString(), "L", "correct", timeAnswer.ToString());
+                csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord(selectedQuestion.ToString(), "L", "correct", timeAnswer.ToString());
                 if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
                 {
                     allAnsTime[selectedQuestion - 1, 0] = timeAnswer;
@@ -463,7 +460,7 @@ public class QuestionAndRecord : MonoBehaviour
             {
                 // 文字の見間違え
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                //csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord(selectedQuestion.ToString(), "R", "character_mistake", timeAnswer.ToString());
+                csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord(selectedQuestion.ToString(), "R", "character_mistake", timeAnswer.ToString());
                 if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
                 {
                     allAnsTime[selectedQuestion - 1, 0] = 4.0f;
@@ -496,7 +493,7 @@ public class QuestionAndRecord : MonoBehaviour
         if(!inQuestion)
         {
             // 勝手に押した
-            //csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord("9999", "xxx", "irrelevant_answer", "9999");
+            csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord("9999", "xxx", "irrelevant_answer", "9999");
         }
         else
         {
@@ -504,7 +501,7 @@ public class QuestionAndRecord : MonoBehaviour
             {
                 // 正答
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                //csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord(selectedQuestion.ToString(), "R", "correct", timeAnswer.ToString());
+                csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord(selectedQuestion.ToString(), "R", "correct", timeAnswer.ToString());
                 if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
                 {
                     allAnsTime[selectedQuestion - 1, 0] = timeAnswer;
@@ -533,7 +530,7 @@ public class QuestionAndRecord : MonoBehaviour
             {
                 // 文字の見間違え
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                //csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord(selectedQuestion.ToString(), "L", "character_mistake", timeAnswer.ToString());
+                csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord(selectedQuestion.ToString(), "L", "character_mistake", timeAnswer.ToString());
                 if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
                 {
                     allAnsTime[selectedQuestion - 1, 0] = 4.0f;

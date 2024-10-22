@@ -13,6 +13,7 @@ public class FilenameLoad : MonoBehaviour
         if(PlayerPrefs.HasKey("InputFilename"))
         {
             filename = PlayerPrefs.GetString("InputFilename");
+            Debug.Log(filename);
         }
     }
 

@@ -12,6 +12,7 @@ public class csvQuestionRecord : MonoBehaviour
     private float timeNow;
     private float timeStart;
     bool IsCheck = false;
+    bool IsFileMade = false;
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,11 @@ public class csvQuestionRecord : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!IsFileMade)
+        {
+            MakeFile(FilenameLoad.filename);
+            IsFileMade = true;
+        }
     }
 
     public void LeftAnswerRecord(string question, string c, string ansState, string ansTime)

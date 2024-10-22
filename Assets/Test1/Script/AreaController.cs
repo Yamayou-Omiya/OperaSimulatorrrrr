@@ -6,6 +6,7 @@ public class AreaController : MonoBehaviour
 {
     public SardineGenerator sarGen;
     public MainCameraController mainCamCnt;
+    GameObject csvWriter;
     private Vector3 mouse;
     [SerializeField] GameObject target;
     public GameObject sardine;
@@ -29,6 +30,7 @@ public class AreaController : MonoBehaviour
         DiameterChanger(areaDiameter);
         sarGen = GameObject.Find("Sardine Generator").GetComponent<SardineGenerator>();
         mainCamCnt = GameObject.Find("Camera Controller").GetComponent<MainCameraController>();
+        csvWriter = GameObject.Find("CSV Writer");
     }
 
     // Update is called once per frame
@@ -112,6 +114,7 @@ public class AreaController : MonoBehaviour
                     else
                     {
                         catchNum += 1;
+                        csvWriter.GetComponent<csvCatch>().CountCatchAmount();
                     }
                 }
             }

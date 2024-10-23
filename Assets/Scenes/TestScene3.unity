@@ -893,7 +893,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378236247}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54bb24b23a8cf894f9d61c39f57346ea, type: 3}
   m_Name: 
@@ -905,7 +905,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378236247}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4498232996d26014992ba57bad074bd2, type: 3}
   m_Name: 
@@ -1348,7 +1348,6 @@ MonoBehaviour:
   questionList2: 
   questionList3: 
   characterList: []
-  text: {fileID: 0}
   imageL1: {fileID: 151549158}
   imageR1: {fileID: 803809066}
   imageL2: {fileID: 453827380}
@@ -3268,7 +3267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb553a551a381ac468ebc1d0e0973f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaCnt: {fileID: 0}
   sardinePrefab: {fileID: 6774064494374394354, guid: 50f15c229c667ab4992375ec759e9e71, type: 3}
   sardine: {fileID: 0}
   areaKey: 0
@@ -4573,7 +4571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122e824d12f85ac47b14f9f81ba45dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamCnt: {fileID: 0}
   target: {fileID: 1685372100}
   sardine: {fileID: 804276318}
   areaSpeed: 2
@@ -4581,7 +4578,6 @@ MonoBehaviour:
   mouseControl: 0
   controllerControl: 1
   requiredStayTime: 2
-  targetObject: {fileID: 804276318}
   sardineKey: 1
   catchNum: 0
 --- !u!136 &2071791934
@@ -4711,7 +4707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db08e3c0faf0cc4b883dd4933184d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaController: {fileID: 0}
   catchNumText: {fileID: 501608379}
 --- !u!1 &2096611533
 GameObject:

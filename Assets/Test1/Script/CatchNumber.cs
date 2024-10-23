@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CatchNumber : MonoBehaviour
 {
-    public AreaController areaController;
+    private AreaController areaController;
     public Text catchNumText;
     
     // Start is called before the first frame update

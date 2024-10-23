@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AreaController : MonoBehaviour
 {
-    public SardineGenerator sarGen;
-    public MainCameraController mainCamCnt;
+    private SardineGenerator sarGen;
+    private MainCameraController mainCamCnt;
     GameObject csvWriter;
     private Vector3 mouse;
     [SerializeField] GameObject target;
@@ -17,8 +17,6 @@ public class AreaController : MonoBehaviour
 
     private float stayTime = 0;
     public float requiredStayTime = 2.0f;
-
-    public GameObject targetObject;
 
     public int sardineKey = 1;
     public int catchNum = 0;
@@ -257,49 +255,160 @@ public class AreaController : MonoBehaviour
     {
         if(this.transform.position.x > 5.333f)
         {
-            if(this.transform.position.z > 3.0f)
+            if(Input.GetAxis("Joystick1Horizontal1") > 0)
             {
-                this.transform.position = new Vector3(5.333f, 0, 3.0f); 
-            }
-            else if(this.transform.position.z < -3.0f)
-            {
-                this.transform.position = new Vector3(5.333f, 0, -3.0f); 
+                if(this.transform.position.z > 3.0f)
+                {
+                    if(Input.GetAxis("Joystick1Vertical1") > 0)
+                    {
+                        this.transform.position += new Vector3(0, 0, 0);
+                    }
+                    else
+                    {
+                        this.transform.position += new Vector3(0, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime);
+                    }
+                }
+                else if(this.transform.position.z < -3.0f)
+                {
+                    if(Input.GetAxis("Joystick1Vertical1") < 0)
+                    {
+                        this.transform.position += new Vector3(0, 0, 0);
+                    }
+                    else
+                    {
+                        this.transform.position += new Vector3(0, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime);
+                    }
+                }
+                else
+                {
+                    this.transform.position += new Vector3(0, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime); 
+                }
             }
             else
             {
-                this.transform.position += new Vector3(0, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime); 
+                if(this.transform.position.z > 3.0f)
+                {
+                    if(Input.GetAxis("Joystick1Vertical1") > 0)
+                    {
+                        this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, 0);
+                    }
+                    else
+                    {
+                        this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime);
+                    }
+                }
+                else if(this.transform.position.z < -3.0f)
+                {
+                    if(Input.GetAxis("Joystick1Vertical1") < 0)
+                    {
+                        this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, 0);
+                    }
+                    else
+                    {
+                        this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime);
+                    }
+                }
+                else
+                {
+                    this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime); 
+                }
             }
         }
         else if(this.transform.position.x < -5.333f)
         {
-            if(this.transform.position.z > 3.0f)
+            if(Input.GetAxis("Joystick1Horizontal1") < 0)
             {
-                this.transform.position = new Vector3(-5.333f, 0, 3.0f); 
-            }
-            else if(this.transform.position.z < -3.0f)
-            {
-                this.transform.position = new Vector3(-5.333f, 0, -3.0f); 
+                if(this.transform.position.z > 3.0f)
+                {
+                    if(Input.GetAxis("Joystick1Vertical1") > 0)
+                    {
+                        this.transform.position += new Vector3(0, 0, 0);
+                    }
+                    else
+                    {
+                        this.transform.position += new Vector3(0, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime);
+                    }
+                }
+                else if(this.transform.position.z < -3.0f)
+                {
+                    if(Input.GetAxis("Joystick1Vertical1") < 0)
+                    {
+                        this.transform.position += new Vector3(0, 0, 0);
+                    }
+                    else
+                    {
+                        this.transform.position += new Vector3(0, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime);
+                    }
+                }
+                else
+                {
+                    this.transform.position += new Vector3(0, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime); 
+                }
             }
             else
             {
-                this.transform.position += new Vector3(0, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime); 
+                if(this.transform.position.z > 3.0f)
+                {
+                    if(Input.GetAxis("Joystick1Vertical1") > 0)
+                    {
+                        this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, 0);
+                    }
+                    else
+                    {
+                        this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime);
+                    }
+                }
+                else if(this.transform.position.z < -3.0f)
+                {
+                    if(Input.GetAxis("Joystick1Vertical1") < 0)
+                    {
+                        this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, 0);
+                    }
+                    else
+                    {
+                        this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime);
+                    }
+                }
+                else
+                {
+                    this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime); 
+                }
             }
         }
         else
         {
             if(this.transform.position.z > 3.0f)
             {
-                this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, 0); 
+                if(Input.GetAxis("Joystick1Vertical1") > 0)
+                {
+                    this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, 0);
+                }
+                else
+                {
+                    this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime);
+                }
             }
             else if(this.transform.position.z < -3.0f)
             {
-                this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, 0); 
+                if(Input.GetAxis("Joystick1Vertical1") < 0)
+                {
+                    this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, 0);
+                }
+                else
+                {
+                    this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime);
+                }
             }
             else
             {
                 this.transform.position += new Vector3(Input.GetAxis("Joystick1Horizontal1")*areaSpeed*Time.deltaTime, 0, Input.GetAxis("Joystick1Vertical1")*areaSpeed*Time.deltaTime); 
             }
         }
+
+        /*if(Input.GetKeyDown("joystick button 2"))
+        {
+            Debug.Log("joyButton");
+        }*/
         
         //Debug.Log("h__" + Input.GetAxis("Joystick1Horizontal1"));
         //Debug.Log("v__" + Input.GetAxis("Joystick1Vertical1"));
@@ -339,20 +448,42 @@ public class AreaController : MonoBehaviour
 
             if (IsColorGreen(currentColor))
             {
-                if(Input.GetMouseButtonDown(0))
+                if(mouseControl)
                 {
-                    Destroy(sardine);
-                    gameObject.GetComponent<Renderer>().material.color = Color.yellow;
-                    sardineKey = 0;
+                    if(Input.GetMouseButtonDown(0))
+                    {
+                        Destroy(sardine);
+                        gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+                        sardineKey = 0;
 
-                    if(gameStart == false)
-                    {
-                        gameStart = true;
+                        if(gameStart == false)
+                        {
+                            gameStart = true;
+                        }
+                        else
+                        {
+                            catchNum += 1;
+                            csvWriter.GetComponent<csvCatch>().Catch(catchNum.ToString(), areaDiameter.ToString(), this.transform.position.x.ToString(), this.transform.position.z.ToString(), sardine.transform.position.x.ToString(), sardine.transform.position.z.ToString());
+                        }
                     }
-                    else
+                }
+                else if(controllerControl)
+                {
+                    if(Input.GetKeyDown("joystick button 2"))
                     {
-                        catchNum += 1;
-                        csvWriter.GetComponent<csvCatch>().Catch(catchNum.ToString(), areaDiameter.ToString(), this.transform.position.x.ToString(), this.transform.position.z.ToString(), sardine.transform.position.x.ToString(), sardine.transform.position.z.ToString());
+                        Destroy(sardine);
+                        gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+                        sardineKey = 0;
+
+                        if(gameStart == false)
+                        {
+                            gameStart = true;
+                        }
+                        else
+                        {
+                            catchNum += 1;
+                            csvWriter.GetComponent<csvCatch>().Catch(catchNum.ToString(), areaDiameter.ToString(), this.transform.position.x.ToString(), this.transform.position.z.ToString(), sardine.transform.position.x.ToString(), sardine.transform.position.z.ToString());
+                        }
                     }
                 }
             }

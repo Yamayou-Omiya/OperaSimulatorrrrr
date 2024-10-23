@@ -33,7 +33,7 @@ public class QuestionAndRecord : MonoBehaviour
     Vector2 selectedPos;
     int selectedCharaNum;
 
-    [SerializeField] private GameObject text;
+    //[SerializeField] private GameObject text;
     [SerializeField] private GameObject imageL1;
     [SerializeField] private GameObject imageR1;
     [SerializeField] private GameObject imageL2;

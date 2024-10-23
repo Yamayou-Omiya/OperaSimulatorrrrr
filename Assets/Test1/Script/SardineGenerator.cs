@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SardineGenerator : MonoBehaviour
 {
-    public AreaController areaCnt;
+    private AreaController areaCnt;
 
     public GameObject sardinePrefab;
     public GameObject sardine;

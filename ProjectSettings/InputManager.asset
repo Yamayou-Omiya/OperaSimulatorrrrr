@@ -454,7 +454,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Joystick2Trigger
+    m_Name: Joystick1Trigger
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -468,9 +468,9 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 1
   - serializedVersion: 3
-    m_Name: Joystick2RedButton
+    m_Name: Joystick1RedButton
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -484,5 +484,5 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 1
   m_UsePhysicalKeys: 1

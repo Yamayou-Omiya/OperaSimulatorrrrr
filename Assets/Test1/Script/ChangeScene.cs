@@ -54,4 +54,9 @@ public class ChangeScene : MonoBehaviour
             alertText.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
         }
     }
+
+    public void ToHeatmapScene()
+    {
+        SceneManager.LoadScene("HeatmapScene");
+    }
 }

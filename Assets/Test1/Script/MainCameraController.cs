@@ -8,11 +8,16 @@ public class MainCameraController : MonoBehaviour
     public Camera subCam1;
     public Camera subCam2;
 
+    public static bool cam0;
+    public static bool cam1;
+    public static bool cam2;
+    public static bool cam3;
+
     public bool Cam0;
     public bool Cam1;
     public bool Cam2;
     public bool Cam3;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +28,11 @@ public class MainCameraController : MonoBehaviour
             Cam2 = ScreenPosition.screenPosition2;
             Cam3 = ScreenPosition.screenPosition3;
         }
+
+        cam0 = Cam0;
+        cam1 = Cam1;
+        cam2 = Cam2;
+        cam3 = Cam3;
 
         if(Cam0)
         {

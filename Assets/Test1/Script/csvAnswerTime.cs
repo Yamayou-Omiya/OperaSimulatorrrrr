@@ -6,24 +6,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class csvCatch : MonoBehaviour
+public class csvAnswerTime : MonoBehaviour
 {
     private StreamWriter sw;
     private float timeNow;
     private float timeStart;
 
-    int catchAmount;
+    float[,] allAnsTime = new float[6, 3];
+    float[] ansTime = new float[6];
 
     bool IsCheck = false;
     bool IsFileMade = false;
 
     bool check;
 
+    
     // Start is called before the first frame update
     void Start()
     {
         timeStart = Time.realtimeSinceStartup;
-        catchAmount = 0;
         check = false;    
     }
 
@@ -36,25 +37,20 @@ public class csvCatch : MonoBehaviour
             IsFileMade = true;
         }
 
-        /*if(IsCheck)
+        allAnsTime = QuestionAndRecord.allAnsTime;
+        ansTime = QuestionAndRecord.AnsTime;
+
+        if(IsCheck)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
-            if(check)
+            for(int i = 0; i < 6; i++)
             {
-                string[] s1 = {timeNow.ToString(), catchAmount.ToString()};
+                string[] s1 = {timeNow.ToString(), allAnsTime[i, 0].ToString(), allAnsTime[i, 1].ToString(), allAnsTime[i, 2].ToString(), ansTime[i].ToString()};
                 string s2 = string.Join(",", s1);
                 sw.WriteLine(s2);
-                check = false;
             }
-        }*/
+        }
     }
-
-    /*public void CountCatchAmount()
-    {
-        catchAmount++;
-        check = true;
-    }*/
-
     private void OnApplicationQuit()
     {
         if (IsCheck)
@@ -76,8 +72,8 @@ public class csvCatch : MonoBehaviour
 
     public void MakeFile(string filename)
     {
-        sw = new StreamWriter(@"Assets/ExperimentData/"+filename+"_catch_amount.csv", false, Encoding.UTF8);
-        string[] s1 = { "time", "catch_amount", "area_diameter", "area_pos.x", "area_pos.z", "sardine_pos.x", "sardine_pos.z" };
+        sw = new StreamWriter(@"Assets/ExperimentData/"+filename+"_answertime.csv", false, Encoding.UTF8);
+        string[] s1 = { "time", "ansTime1", "ansTime2", "ansTime3", "ansTimeAve" };
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);
         IsCheck = true;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AreaController : MonoBehaviour
 {
     private SardineGenerator sarGen;
-    private MainCameraController mainCamCnt;
+    //private MainCameraController MainCameraController;
     GameObject csvWriter;
     private Vector3 mouse;
     [SerializeField] GameObject target;
@@ -28,7 +28,7 @@ public class AreaController : MonoBehaviour
     {
         DiameterChanger(areaDiameter);
         sarGen = GameObject.Find("Sardine Generator").GetComponent<SardineGenerator>();
-        mainCamCnt = GameObject.Find("Camera Controller").GetComponent<MainCameraController>();
+        //MainCameraController = GameObject.Find("Camera Controller").GetComponent<MainCameraController>();
         csvWriter = GameObject.Find("CSV Writer");
     }
 
@@ -57,7 +57,7 @@ public class AreaController : MonoBehaviour
     private void MouseController()
     {
         mouse = Input.mousePosition;
-        if(mainCamCnt.Cam0)
+        if(MainCameraController.cam0)
         {
             if(mouse.x > 1920)
             {
@@ -105,7 +105,7 @@ public class AreaController : MonoBehaviour
                 }
             }
         }
-        else if(mainCamCnt.Cam1)
+        else if(MainCameraController.cam1)
         {
             if(mouse.x > 960)
             {
@@ -153,7 +153,7 @@ public class AreaController : MonoBehaviour
                 }
             }
         }
-        else if(mainCamCnt.Cam2)
+        else if(MainCameraController.cam2)
         {
             if(mouse.x > 1920)
             {
@@ -201,7 +201,7 @@ public class AreaController : MonoBehaviour
                 }
             }                
         }
-        else if(mainCamCnt.Cam3)
+        else if(MainCameraController.cam3)
         {
             if(mouse.x > 1440)
             {

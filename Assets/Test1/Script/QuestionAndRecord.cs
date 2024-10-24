@@ -20,6 +20,10 @@ public class QuestionAndRecord : MonoBehaviour
     public bool mainPos3 = false;
     public bool mainPosFull = false;
 
+    public static bool subLevel1;
+    public static bool subLevel2;
+    public static bool subLevel3;
+
     [SerializeField, PersistentAmongPlayMode] private bool listReset;
     [SerializeField, PersistentAmongPlayMode] private List<int> questionList1 = new List<int>();
     [SerializeField, PersistentAmongPlayMode] private List<int> questionList2 = new List<int>();
@@ -49,8 +53,8 @@ public class QuestionAndRecord : MonoBehaviour
 
     string charaNow;
 
-    float[,] allAnsTime = new float[27, 3];  // 回答時間を各エリア，各回答数毎に記録（エリア０の１回目，２回目，エリア１の１回目，２回目，… の順）
-    public float[,] AnsTime = new float[27, 1];  // エリアごとの回答時間の平均（to_heatmap.cs へ）
+    public static float[,] allAnsTime = new float[6, 3];  // 回答時間を各エリア，各回答数毎に記録（エリア０の１回目，２回目，エリア１の１回目，２回目，… の順）
+    public static float[] AnsTime = new float[6];  // エリアごとの回答時間の平均（to_heatmap.cs へ）
 
     // Start is called before the first frame update
     void Start()
@@ -68,12 +72,16 @@ public class QuestionAndRecord : MonoBehaviour
             mainPos3 = ScreenPosition.screenPosition3;
             mainPosFull = ScreenPosition.screenPositionFull;
         }
+
+        subLevel1 = level1;
+        subLevel2 = level2;
+        subLevel3 = level3;
         
-        for(int i = 0; i < 27; i++)
+        for(int i = 0; i < 6; i++)
         {
             for(int j = 0; j < 3; j++)
             {
-                allAnsTime[i, j] = 5.0f;  // 初期値5.0に設定
+                allAnsTime[i, j] = 7.0f;  // 初期値5.0に設定
             }
         }
 
@@ -259,7 +267,7 @@ public class QuestionAndRecord : MonoBehaviour
             if(questionKey && !inQuestion) // "出題可能" かつ "出題中ではない"
             {
                 questionKey = false;
-                Invoke("Question", UnityEngine.Random.Range(2.0f, 5.0f)); // 出題間隔設定(2, 5)
+                Invoke("Question", UnityEngine.Random.Range(2f, 5f)); // 出題間隔設定(2, 5)
             }
         }
     }
@@ -377,20 +385,20 @@ public class QuestionAndRecord : MonoBehaviour
     void Disappearance()
     {
         timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-        if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
+        if(allAnsTime[selectedQuestion - 1, 0] == 7.0f)
         {
-            allAnsTime[selectedQuestion - 1, 0] = 4.0f;
+            allAnsTime[selectedQuestion - 1, 0] = 6.0f;
         }
-        else if(allAnsTime[selectedQuestion - 1, 0] < 5.0f)
+        else if(allAnsTime[selectedQuestion - 1, 0] < 7.0f)
         {
-            if(allAnsTime[selectedQuestion - 1, 1] == 5.0f)
+            if(allAnsTime[selectedQuestion - 1, 1] == 7.0f)
             {
-                allAnsTime[selectedQuestion - 1, 1] = 4.0f;
+                allAnsTime[selectedQuestion - 1, 1] = 6.0f;
             }
-            else if(allAnsTime[selectedQuestion - 1, 1] < 5.0f)
+            else if(allAnsTime[selectedQuestion - 1, 1] < 7.0f)
             {
-                allAnsTime[selectedQuestion - 1, 2] = 4.0f;
-                AnsTime[selectedQuestion - 1, 0] = (allAnsTime[selectedQuestion - 1, 0] + allAnsTime[selectedQuestion - 1, 1] + allAnsTime[selectedQuestion - 1, 2]) / 3; 
+                allAnsTime[selectedQuestion - 1, 2] = 6.0f;
+                AnsTime[selectedQuestion - 1] = (allAnsTime[selectedQuestion - 1, 0] + allAnsTime[selectedQuestion - 1, 1] + allAnsTime[selectedQuestion - 1, 2]) / 3; 
             }
         }
         imageL.SetActive(false);
@@ -414,20 +422,20 @@ public class QuestionAndRecord : MonoBehaviour
                 // 正答
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
                 csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord(selectedQuestion.ToString(), "L", "correct", timeAnswer.ToString());
-                if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
+                if(allAnsTime[selectedQuestion - 1, 0] == 7.0f)
                 {
                     allAnsTime[selectedQuestion - 1, 0] = timeAnswer;
                 }
-                else if(allAnsTime[selectedQuestion - 1, 0] < 5.0f)
+                else if(allAnsTime[selectedQuestion - 1, 0] < 7.0f)
                 {
-                    if(allAnsTime[selectedQuestion - 1, 1] == 5.0f)
+                    if(allAnsTime[selectedQuestion - 1, 1] == 7.0f)
                     {
                         allAnsTime[selectedQuestion - 1, 1] = timeAnswer;
                     }
-                    else if(allAnsTime[selectedQuestion - 1, 1] < 5.0f)
+                    else if(allAnsTime[selectedQuestion - 1, 1] < 7.0f)
                     {
                         allAnsTime[selectedQuestion - 1, 2] = timeAnswer;
-                        AnsTime[selectedQuestion - 1, 0] = (allAnsTime[selectedQuestion - 1, 0] + allAnsTime[selectedQuestion - 1, 1] + allAnsTime[selectedQuestion - 1, 2]) / 3; 
+                        AnsTime[selectedQuestion - 1] = (allAnsTime[selectedQuestion - 1, 0] + allAnsTime[selectedQuestion - 1, 1] + allAnsTime[selectedQuestion - 1, 2]) / 3; 
                     }
                 }
                 CancelInvoke("Disappearance");
@@ -443,20 +451,20 @@ public class QuestionAndRecord : MonoBehaviour
                 // 文字の見間違え
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
                 csvWriter.GetComponent<csvQuestionRecord>().LeftAnswerRecord(selectedQuestion.ToString(), "R", "character_mistake", timeAnswer.ToString());
-                if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
+                if(allAnsTime[selectedQuestion - 1, 0] == 7.0f)
                 {
-                    allAnsTime[selectedQuestion - 1, 0] = 4.0f;
+                    allAnsTime[selectedQuestion - 1, 0] = 6.0f;
                 }
-                else if(allAnsTime[selectedQuestion - 1, 0] < 5.0f)
+                else if(allAnsTime[selectedQuestion - 1, 0] < 7.0f)
                 {
-                    if(allAnsTime[selectedQuestion - 1, 1] == 5.0f)
+                    if(allAnsTime[selectedQuestion - 1, 1] == 7.0f)
                     {
-                        allAnsTime[selectedQuestion - 1, 1] = 4.0f;
+                        allAnsTime[selectedQuestion - 1, 1] = 6.0f;
                     }
-                    else if(allAnsTime[selectedQuestion - 1, 1] < 5.0f)
+                    else if(allAnsTime[selectedQuestion - 1, 1] < 7.0f)
                     {
-                        allAnsTime[selectedQuestion - 1, 2] = 4.0f;
-                        AnsTime[selectedQuestion - 1, 0] = (allAnsTime[selectedQuestion - 1, 0] + allAnsTime[selectedQuestion - 1, 1] + allAnsTime[selectedQuestion - 1, 2]) / 3; 
+                        allAnsTime[selectedQuestion - 1, 2] = 6.0f;
+                        AnsTime[selectedQuestion - 1] = (allAnsTime[selectedQuestion - 1, 0] + allAnsTime[selectedQuestion - 1, 1] + allAnsTime[selectedQuestion - 1, 2]) / 3; 
                     }
                 }
                 CancelInvoke("Disappearance");
@@ -484,20 +492,20 @@ public class QuestionAndRecord : MonoBehaviour
                 // 正答
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
                 csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord(selectedQuestion.ToString(), "R", "correct", timeAnswer.ToString());
-                if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
+                if(allAnsTime[selectedQuestion - 1, 0] == 7.0f)
                 {
                     allAnsTime[selectedQuestion - 1, 0] = timeAnswer;
                 }
-                else if(allAnsTime[selectedQuestion - 1, 0] < 5.0f)
+                else if(allAnsTime[selectedQuestion - 1, 0] < 7.0f)
                 {
-                    if(allAnsTime[selectedQuestion - 1, 1] == 5.0f)
+                    if(allAnsTime[selectedQuestion - 1, 1] == 7.0f)
                     {
                         allAnsTime[selectedQuestion - 1, 1] = timeAnswer;
                     }
-                    else if(allAnsTime[selectedQuestion - 1, 1] < 5.0f)
+                    else if(allAnsTime[selectedQuestion - 1, 1] < 7.0f)
                     {
                         allAnsTime[selectedQuestion - 1, 2] = timeAnswer;
-                        AnsTime[selectedQuestion - 1, 0] = (allAnsTime[selectedQuestion - 1, 0] + allAnsTime[selectedQuestion - 1, 1] + allAnsTime[selectedQuestion - 1, 2]) / 3; 
+                        AnsTime[selectedQuestion - 1] = (allAnsTime[selectedQuestion - 1, 0] + allAnsTime[selectedQuestion - 1, 1] + allAnsTime[selectedQuestion - 1, 2]) / 3; 
                     }
                 }
                 CancelInvoke("Disappearance");
@@ -513,20 +521,20 @@ public class QuestionAndRecord : MonoBehaviour
                 // 文字の見間違え
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
                 csvWriter.GetComponent<csvQuestionRecord>().RightAnswerRecord(selectedQuestion.ToString(), "L", "character_mistake", timeAnswer.ToString());
-                if(allAnsTime[selectedQuestion - 1, 0] == 5.0f)
+                if(allAnsTime[selectedQuestion - 1, 0] == 7.0f)
                 {
-                    allAnsTime[selectedQuestion - 1, 0] = 4.0f;
+                    allAnsTime[selectedQuestion - 1, 0] = 6.0f;
                 }
-                else if(allAnsTime[selectedQuestion - 1, 0] < 5.0f)
+                else if(allAnsTime[selectedQuestion - 1, 0] < 7.0f)
                 {
-                    if(allAnsTime[selectedQuestion - 1, 1] == 5.0f)
+                    if(allAnsTime[selectedQuestion - 1, 1] == 7.0f)
                     {
-                        allAnsTime[selectedQuestion - 1, 1] = 4.0f;
+                        allAnsTime[selectedQuestion - 1, 1] = 6.0f;
                     }
-                    else if(allAnsTime[selectedQuestion - 1, 1] < 5.0f)
+                    else if(allAnsTime[selectedQuestion - 1, 1] < 7.0f)
                     {
-                        allAnsTime[selectedQuestion - 1, 2] = 4.0f;
-                        AnsTime[selectedQuestion - 1, 0] = (allAnsTime[selectedQuestion - 1, 0] + allAnsTime[selectedQuestion - 1, 1] + allAnsTime[selectedQuestion - 1, 2]) / 3; 
+                        allAnsTime[selectedQuestion - 1, 2] = 6.0f;
+                        AnsTime[selectedQuestion - 1] = (allAnsTime[selectedQuestion - 1, 0] + allAnsTime[selectedQuestion - 1, 1] + allAnsTime[selectedQuestion - 1, 2]) / 3; 
                     }
                 }
                 CancelInvoke("Disappearance");

@@ -932,6 +932,7 @@ GameObject:
   - component: {fileID: 378236250}
   - component: {fileID: 378236251}
   - component: {fileID: 378236252}
+  - component: {fileID: 378236253}
   m_Layer: 0
   m_Name: CSV Writer
   m_TagString: Untagged
@@ -1000,6 +1001,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1fc72f5e1512294ea0166c33c600f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &378236253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378236247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3343cbd292b2943a475518701bc1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &395938557

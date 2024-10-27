@@ -5,30 +5,60 @@ using UnityEngine;
 public class AreaController : MonoBehaviour
 {
     private SardineGenerator sarGen;
-    //private MainCameraController MainCameraController;
-    GameObject csvWriter;
-    private Vector3 mouse;
-    [SerializeField] GameObject target;
     public GameObject sardine;
-    public float areaSpeed = 1.5f;
-    public float areaDiameter = 1.0f;
+    GameObject csvWriter;
+
+    private Vector3 mouse;
+
     [SerializeField] bool mouseControl;
     [SerializeField] bool controllerControl;
+    public static bool gameStart = false;
+
+    public bool mainLevel1 = false;
+    public bool mainLevel2 = false;
+    public bool mainLevel3 = false;
+    public bool mainLevel4 = false;
+    public bool mainLevel5 = false;
+
+    public float areaSpeed = 1.5f;
+    public float areaDiameter = 1.0f;
+    public float areaDiameter1 = 1.5f;
+    public float areaDiameter2 = 1.0f;
+    public float areaDiameter3 = 0.75f;
 
     private float stayTime = 0;
     public float requiredStayTime = 2.0f;
 
     public int sardineKey = 1;
     public int catchNum = 0;
-
-    public static bool gameStart = false;
     
     // Start is called before the first frame update
     void Start()
     {
+        if(ChangeScene.start)
+        {
+            mainLevel1 = MainTaskLevel.mainLevel1;
+            mainLevel2 = MainTaskLevel.mainLevel2;
+            mainLevel3 = MainTaskLevel.mainLevel3;
+            mainLevel4 = MainTaskLevel.mainLevel4;
+            mainLevel5 = MainTaskLevel.mainLevel5;
+        }
+
+        if(mainLevel1)
+        {
+            areaDiameter = areaDiameter1;
+        }
+        if(mainLevel2)
+        {
+            areaDiameter = areaDiameter2;
+        }
+        if(mainLevel3 || mainLevel4 || mainLevel5)
+        {
+            areaDiameter = areaDiameter3;
+        }
+        
         DiameterChanger(areaDiameter);
         sarGen = GameObject.Find("Sardine Generator").GetComponent<SardineGenerator>();
-        //MainCameraController = GameObject.Find("Camera Controller").GetComponent<MainCameraController>();
         csvWriter = GameObject.Find("CSV Writer");
     }
 

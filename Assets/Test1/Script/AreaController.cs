@@ -489,11 +489,13 @@ public class AreaController : MonoBehaviour
                         if(gameStart == false)
                         {
                             gameStart = true;
+                            stayTime = 0;
                         }
                         else
                         {
                             catchNum += 1;
                             csvWriter.GetComponent<csvCatch>().Catch(catchNum.ToString(), areaDiameter.ToString(), this.transform.position.x.ToString(), this.transform.position.z.ToString(), sardine.transform.position.x.ToString(), sardine.transform.position.z.ToString());
+                            stayTime = 0;
                         }
                     }
                 }
@@ -508,11 +510,13 @@ public class AreaController : MonoBehaviour
                         if(gameStart == false)
                         {
                             gameStart = true;
+                            stayTime = 0;
                         }
                         else
                         {
                             catchNum += 1;
                             csvWriter.GetComponent<csvCatch>().Catch(catchNum.ToString(), areaDiameter.ToString(), this.transform.position.x.ToString(), this.transform.position.z.ToString(), sardine.transform.position.x.ToString(), sardine.transform.position.z.ToString());
+                            stayTime = 0;
                         }
                     }
                 }

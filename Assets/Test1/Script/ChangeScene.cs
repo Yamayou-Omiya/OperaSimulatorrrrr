@@ -24,6 +24,7 @@ public class ChangeScene : MonoBehaviour
     public void DebugButtonClicked()
     {
         SceneManager.LoadScene("TestScene3");
+        start = true;
     }
     public void StartButtonClicked()
     {

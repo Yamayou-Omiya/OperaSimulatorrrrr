@@ -501,7 +501,7 @@ public class AreaController : MonoBehaviour
                 }
                 else if(controllerControl)
                 {
-                    if(Input.GetKeyDown("joystick button 2"))
+                    if(Input.GetKeyDown("joystick button 0"))
                     {
                         Destroy(sardine);
                         gameObject.GetComponent<Renderer>().material.color = Color.yellow;

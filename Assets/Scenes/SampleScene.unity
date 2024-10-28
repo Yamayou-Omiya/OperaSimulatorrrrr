@@ -102496,8 +102496,8 @@ MonoBehaviour:
   armTopic: zx120/arm/cmd
   bucketTopic: zx120/bucket/cmd
   tracksTopic: zx120/tracks/cmd_vel
-  isKeyboardControl: 1
-  isControllerControl: 0
+  isKeyboardControl: 0
+  isControllerControl: 1
   isProControllerControl: 0
   switchSound: {fileID: 8300000, guid: b603a3951e19e8845a2e199d2a6c7dab, type: 3}
   DriverCamera: {fileID: 1963296348}

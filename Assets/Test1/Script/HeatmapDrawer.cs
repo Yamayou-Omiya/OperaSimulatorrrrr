@@ -122,6 +122,8 @@ public class HeatmapDrawer : MonoBehaviour
                 hmText[18].text = hmTime[3];
                 hmText[19].text = hmTime[4];
                 hmText[21].text = hmTime[5];
+
+                hmText[4].text = "Main Screen";
             }
         }
         if(main1sub2)
@@ -151,6 +153,8 @@ public class HeatmapDrawer : MonoBehaviour
                 hmText[20].text = hmTime[3];
                 hmText[22].text = hmTime[4];
                 hmText[24].text = hmTime[5];
+
+                hmText[4].text = "Main Screen";
             }
         }
         if(main1sub3)
@@ -180,6 +184,8 @@ public class HeatmapDrawer : MonoBehaviour
                 hmText[23].text = hmTime[3];
                 hmText[25].text = hmTime[4];
                 hmText[26].text = hmTime[5];
+
+                hmText[4].text = "Main Screen";
             }
         }
         if(main2sub1)
@@ -210,7 +216,7 @@ public class HeatmapDrawer : MonoBehaviour
                 hmText[20].text = hmTime[4];
                 hmText[23].text = hmTime[5];
 
-                Debug.Log("hm_in");
+                hmText[13].text = "Main Screen";
             }
         }
         if(main2sub2)
@@ -240,6 +246,8 @@ public class HeatmapDrawer : MonoBehaviour
                 hmText[18].text = hmTime[3];
                 hmText[22].text = hmTime[4];
                 hmText[26].text = hmTime[5];
+
+                hmText[13].text = "Main Screen";
             }
         }
         if(main2sub3)
@@ -269,6 +277,8 @@ public class HeatmapDrawer : MonoBehaviour
                 hmText[21].text = hmTime[3];
                 hmText[24].text = hmTime[4];
                 hmText[25].text = hmTime[5];
+
+                hmText[13].text = "Main Screen";
             }
         }
         if(main3sub1)
@@ -298,6 +308,8 @@ public class HeatmapDrawer : MonoBehaviour
                 hmText[12].text = hmTime[3];
                 hmText[15].text = hmTime[4];
                 hmText[16].text = hmTime[5];
+
+                hmText[22].text = "Main Screen";
             }
         }
         if(main3sub2)
@@ -327,6 +339,8 @@ public class HeatmapDrawer : MonoBehaviour
                 hmText[9].text = hmTime[3];
                 hmText[13].text = hmTime[4];
                 hmText[17].text = hmTime[5];
+
+                hmText[22].text = "Main Screen";
             }
         }
         if(main3sub3)
@@ -356,6 +370,8 @@ public class HeatmapDrawer : MonoBehaviour
                 hmText[10].text = hmTime[3];
                 hmText[11].text = hmTime[4];
                 hmText[14].text = hmTime[5];
+
+                hmText[22].text = "Main Screen";
             }
         }
     }

@@ -4946,12 +4946,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122e824d12f85ac47b14f9f81ba45dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1685372100}
   sardine: {fileID: 804276318}
-  areaSpeed: 2
-  areaDiameter: 1
   mouseControl: 0
   controllerControl: 1
+  mainLevel1: 0
+  mainLevel2: 0
+  mainLevel3: 0
+  mainLevel4: 0
+  mainLevel5: 0
+  areaSpeed: 2
+  areaDiameter: 1
+  areaDiameter1: 1.5
+  areaDiameter2: 1
+  areaDiameter3: 0.75
   requiredStayTime: 2
   sardineKey: 1
   catchNum: 0

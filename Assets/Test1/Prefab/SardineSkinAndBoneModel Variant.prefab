@@ -108,10 +108,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sarGen: {fileID: 0}
   sardineTransform: {x: 1, y: 0, z: 1}
-  speedX: 1
-  speedZ: 1
   width: 2.5
   height: 1.5
+  speedX: 1
+  speedZ: 1
+  speedX1: 0.75
+  speedZ1: 0.75
+  speedX2: 1
+  speedZ2: 1
+  speedX3: 1.5
+  speedZ3: 1.5
+  mainLevel1: 0
+  mainLevel2: 0
+  mainLevel3: 1
+  mainLevel4: 0
+  mainLevel5: 0
 --- !u!54 &1543570389874599630
 Rigidbody:
   m_ObjectHideFlags: 0

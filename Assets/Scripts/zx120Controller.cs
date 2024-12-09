@@ -8,13 +8,13 @@ using RosMessageTypes.Geometry;
 public class zx120Controller : MonoBehaviour
 {
     ROSConnection ros;
-    private float boomIncreaseCoefficient = 0.271f;
-    private float boomDecreaseCoefficient = 0.216f;
-    private float swingCoefficient = 1.279f;
-    private float armIncreaseCoefficient = 0.482f;
-    private float armDecreaseCoefficient = 0.670f;
-    private float bucketIncreaseCoefficient = 0.991f;
-    private float bucketDecreaseCoefficient = 0.802f;
+    private float boomIncreaseCoefficient = 0.271f/2;
+    private float boomDecreaseCoefficient = 0.216f/2;
+    private float swingCoefficient = 1.279f/2;
+    private float armIncreaseCoefficient = 0.482f/2;
+    private float armDecreaseCoefficient = 0.670f/2;
+    private float bucketIncreaseCoefficient = 0.991f/2;
+    private float bucketDecreaseCoefficient = 0.802f/2;
 
     private float boomUpperLimit = Mathf.Deg2Rad * 44.0f;
     private float boomLowerLimit = Mathf.Deg2Rad * -70.0f;

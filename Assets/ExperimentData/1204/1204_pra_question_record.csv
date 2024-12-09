@@ -1,0 +1,13 @@
+﻿Time,LorR,Question,Character,Answer_State,Answer_Time
+120.431,left,6,L,correct,0.8332214
+124.721,left,3,L,correct,0.6347046
+149.2515,left,9999,xx,irrelevant_answer,9999
+154.574,left,5,L,correct,0.7423096
+157.9105,left,3,R,character_mistake,0.8117828
+163.8265,right,6,R,correct,1.009552
+168.3111,left,4,L,correct,0.6165466
+171.5177,right,5,R,correct,0.8255463
+176.4909,right,2,R,correct,0.9464264
+272.3633,right,2,R,correct,1.441071
+276.0599,right,6,R,correct,0.07617188
+279.7531,right,3,R,correct,0.7798157

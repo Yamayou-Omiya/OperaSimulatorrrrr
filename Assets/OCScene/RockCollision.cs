@@ -12,7 +12,12 @@ public class RockCollision : MonoBehaviour
         {
             Debug.Log("Bucket と衝突したので削除します");
             Destroy(gameObject);  // 自分自身を削除
-
+            if (!pointAdded)
+            {
+                pointAdded = true;  // ポイント追加フラグを立てる
+                ScoreManager.rockCount++;  // スコアを追加
+                Debug.Log("スコアを追加しました: " + ScoreManager.rockCount);
+            }
         }
     }
 }

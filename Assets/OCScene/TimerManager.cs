@@ -22,12 +22,16 @@ public class TimerManager : MonoBehaviour
     {
         if (StartChecker.gameStart)
         {
-            timer += Time.deltaTime;
-            UpdateTimerText();
-        }
-        else if (GoalChecker.goal)
-        {
-            finalTime = timer;
+            if(!GoalChecker.goal)
+            {
+                timer += Time.deltaTime;
+                UpdateTimerText();  // ゲームが開始されたらタイマーを動作中にする
+            }
+            else
+            {
+                finalTime = timer;  // 最終的なタイマーの値を保存
+                Debug.Log("Final Time: " + finalTime);
+            }      
         }
     }
     

@@ -7,6 +7,10 @@ TagManager:
   - robot
   - wheel
   - manip
+  - Obstacle
+  - FxTemporaire
+  - rock
+  - bucket
   layers:
   - Default
   - TransparentFX

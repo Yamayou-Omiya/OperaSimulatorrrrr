@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GoalChecker : MonoBehaviour
+{
+    public GameObject zx120;  // 対象オブジェクトをInspectorでアサイン
+    public float thresholdX = -23.5f;  // A: x座標の閾値
+    public float thresholdZ = 4.7f;   // B: z座標の閾値
+
+    public static bool goal = false;
+
+    void Update()
+    {
+        if (!goal)
+        {
+            if (StartChecker.gameStart)
+            {
+                Vector3 pos = zx120.transform.position;
+
+                if (pos.x >= thresholdX && pos.z >= thresholdZ)
+                {
+                    goal = true;
+                    Debug.Log("game start");
+                    // 必要なら他の処理をここに書く
+                }
+            }
+        }
+    }
+
+}

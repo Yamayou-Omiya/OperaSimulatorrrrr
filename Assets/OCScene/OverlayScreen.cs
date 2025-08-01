@@ -10,7 +10,7 @@ public class OverlayScreen : MonoBehaviour
 
     void Update()
     {
-        if (!hasShown && StartChecker.gameStart)//GoalChecker.goal)
+        if (!hasShown && GoalChecker.goal)
         {
             overlayPanel.SetActive(true);  // パネルを表示
             hasShown = true;

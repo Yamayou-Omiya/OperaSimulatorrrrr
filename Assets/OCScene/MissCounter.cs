@@ -9,12 +9,12 @@ public class MissCounter : MonoBehaviour
     public float missCooldown = 3f; // ミスカウントのクールタイム（秒）
     private float lastMissTime = -Mathf.Infinity; // 最後にミスを記録した時間
 
-    public void MissCount(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
         if (StartChecker.gameStart && !GoalChecker.goal)
         {
             // obstacle タグのみ処理対象
-            if (other.CompareTag("Obstacle"))
+            if (collision.collider.tag == "Obstacle")
             {
                 // 現在時刻が前回ミス記録＋クールタイムより大きければ OK
                 if (Time.time >= lastMissTime + missCooldown)
@@ -25,7 +25,7 @@ public class MissCounter : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("ミスのクールタイム中。カウントしません");
+                    //Debug.Log("ミスのクールタイム中。カウントしません");
                 }
             }
         }

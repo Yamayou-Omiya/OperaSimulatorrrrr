@@ -15,8 +15,8 @@ public class RockCollision : MonoBehaviour
             if (!pointAdded)
             {
                 pointAdded = true;  // ポイント追加フラグを立てる
-                ScoreManager.rockCount++;  // スコアを追加
-                Debug.Log("スコアを追加しました: " + ScoreManager.rockCount);
+                RockManager.rockCount++;  // スコアを追加
+                Debug.Log("スコアを追加しました: " + RockManager.rockCount);
             }
         }
     }

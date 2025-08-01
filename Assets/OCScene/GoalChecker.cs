@@ -21,7 +21,7 @@ public class GoalChecker : MonoBehaviour
                 if (pos.x <= thresholdX && pos.z >= thresholdZ)
                 {
                     goal = true;
-                    Debug.Log("game start");
+                    Debug.Log("goal");
                     // 必要なら他の処理をここに書く
                 }
             }

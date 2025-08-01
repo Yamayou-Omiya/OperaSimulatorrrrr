@@ -20,6 +20,7 @@ public class CollisionSound : MonoBehaviour
         if (other.tag == "Obstacle")
         {
             audioSource.Play();
+            //Debug.Log("Collision sound played for: " + other.name);
         }
     }
 }

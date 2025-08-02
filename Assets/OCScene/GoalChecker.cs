@@ -18,7 +18,7 @@ public class GoalChecker : MonoBehaviour
             {
                 Vector3 pos = zx120.transform.position;
                 //Debug.Log("Current Position: " + pos);
-                if (pos.x <= thresholdX && pos.z >= thresholdZ)
+                if (pos.x >= thresholdX && pos.z <= thresholdZ)
                 {
                     goal = true;
                     Debug.Log("goal");

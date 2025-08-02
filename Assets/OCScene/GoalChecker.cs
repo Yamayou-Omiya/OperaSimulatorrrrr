@@ -16,13 +16,16 @@ public class GoalChecker : MonoBehaviour
         {
             if (StartChecker.gameStart)
             {
-                Vector3 pos = zx120.transform.position;
-                //Debug.Log("Current Position: " + pos);
-                if (pos.x >= thresholdX && pos.z <= thresholdZ)
+                if (RockManager.rockCount >= 3)
                 {
-                    goal = true;
-                    Debug.Log("goal");
-                    // 必要なら他の処理をここに書く
+                    Vector3 pos = zx120.transform.position;
+                    //Debug.Log("Current Position: " + pos);
+                    if (pos.x >= thresholdX && pos.z <= thresholdZ)
+                    {
+                        goal = true;
+                        Debug.Log("goal");
+                        // 必要なら他の処理をここに書く
+                    }
                 }
             }
         }

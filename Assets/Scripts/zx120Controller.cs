@@ -86,6 +86,9 @@ public class zx120Controller : MonoBehaviour
         if (isControllerControl) InputControllers();
         if (isProControllerControl) InputProControllers();
 
+        //Debug.Log("rightWheel: " + rightWheel.ToString() + " leftWheel: " + leftWheel.ToString());
+        //Debug.Log("Joystick1Vertical2" + Input.GetAxis("Joystick1Vertical2").ToString());
+
         UpdateAndPublishMessages();
 
     }

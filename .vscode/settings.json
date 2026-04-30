@@ -51,5 +51,9 @@
         "temp/": true,
         "Temp/": true
     },
+<<<<<<< HEAD
     "dotnet.defaultSolution": "OperaSimulatorrrrr-1.sln"
+=======
+    "dotnet.defaultSolution": "OperaSimulatorrrrr.sln"
+>>>>>>> 63d92aa4c50b1612ea4a5eb8ef1bd4d0522e5fb7
 }

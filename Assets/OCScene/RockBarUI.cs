@@ -8,8 +8,13 @@ public class RockBarUI : MonoBehaviour
     public Image rockBarImage;         // 伸縮するImage（UIバー）
     public Text rockProgressText;    // ← UI Text を追加
     public int maxRockCount = 6;       // 最大数（6個）
+    public static int maxRock = 0;
 
-    
+    void Start()
+    {
+        maxRock = maxRockCount; // 最大数を静的変数に設定
+    }
+
     void Update()
     {
         float ratio = Mathf.Clamp01((float)RockManager.rockCount / maxRockCount);

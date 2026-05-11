@@ -16,7 +16,7 @@ public class GoalChecker : MonoBehaviour
         {
             if (StartChecker.gameStart)
             {
-                if (RockManager.rockCount >= 3)
+                if (RockManager.rockCount >= RockBarUI.maxRock)
                 {
                     Vector3 pos = zx120.transform.position;
                     //Debug.Log("Current Position: " + pos);

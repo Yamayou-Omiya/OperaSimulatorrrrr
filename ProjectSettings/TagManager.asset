@@ -11,6 +11,7 @@ TagManager:
   - FxTemporaire
   - rock
   - bucket
+  - rock_practice
   layers:
   - Default
   - TransparentFX

@@ -34,11 +34,11 @@ public class LeftJoystickControlledImage : MonoBehaviour
 
         if (Math.Pow(armState, 2) + Math.Pow(swingState, 2) < 1)
         {
-            offset = new Vector2(armState, -swingState) * maxMoveDistance;
+            offset = new Vector2(-swingState, -armState) * maxMoveDistance;
         }
         else
         {
-            offset = new Vector2(armState, -swingState) * maxMoveDistance / (float)Math.Sqrt(Math.Pow(armState, 2) + Math.Pow(swingState, 2));
+            offset = new Vector2(-swingState, -armState) * maxMoveDistance / (float)Math.Sqrt(Math.Pow(armState, 2) + Math.Pow(swingState, 2));
         }
 
         targetPosition = initialPosition + offset;

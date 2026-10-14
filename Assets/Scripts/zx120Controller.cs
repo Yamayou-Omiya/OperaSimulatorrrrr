@@ -10,7 +10,7 @@ public class zx120Controller : MonoBehaviour
     ROSConnection ros;
     private float boomIncreaseCoefficient = 0.271f;
     private float boomDecreaseCoefficient = 0.216f;
-    private float swingCoefficient = 1.279f;
+    private float swingCoefficient = 0.500f;
     private float armIncreaseCoefficient = 0.482f;
     private float armDecreaseCoefficient = 0.670f;
     private float bucketIncreaseCoefficient = 0.991f;
@@ -137,16 +137,16 @@ public class zx120Controller : MonoBehaviour
             else if (Input.GetKey("k")) boomDirection = -1.0f;
         }
 
-        if (Input.GetKey("d") ^ Input.GetKey("e"))
+        if (Input.GetKey("s") ^ Input.GetKey("f"))
         {
-            if (Input.GetKey("d")) swingDirection = 1.0f;
-            else if (Input.GetKey("e")) swingDirection = -1.0f;
+            if (Input.GetKey("s")) swingDirection = 1.0f; //d
+            else if (Input.GetKey("f")) swingDirection = -1.0f; //e
         }
 
-        if (Input.GetKey("f") ^ Input.GetKey("s"))
+        if (Input.GetKey("d") ^ Input.GetKey("e"))
         {
-            if (Input.GetKey("f")) armDirection = 1.0f;
-            else if (Input.GetKey("s")) armDirection = -1.0f;
+            if (Input.GetKey("d")) armDirection = 1.0f; //f
+            else if (Input.GetKey("e")) armDirection = -1.0f; //s
         }
 
 
@@ -172,8 +172,8 @@ public class zx120Controller : MonoBehaviour
     void InputControllers()
     {
         boomDirection = Input.GetAxis("Joystick3Vertical");
-        swingDirection = Input.GetAxis("Joystick2Vertical");
-        armDirection = Input.GetAxis("Joystick2Horizontal");
+        swingDirection = Input.GetAxis("Joystick2Horizontal");//"Joystick2Vertical"
+        armDirection = Input.GetAxis("Joystick2Vertical");//"Joystick2Horizontal"
         bucketDirection = Input.GetAxis("Joystick3Horizontal");
         leftWheel = Input.GetAxis("Joystick1Vertical1");
         rightWheel = Input.GetAxis("Joystick1Vertical2");
@@ -187,8 +187,8 @@ public class zx120Controller : MonoBehaviour
         if (functionSwitch)
         {
             boomDirection = Input.GetAxis("ProJoystick1Vertical2");
-            swingDirection = -Input.GetAxis("ProJoystick1Vertical1");
-            armDirection = -Input.GetAxis("Joystick1Vertical1");
+            swingDirection = Input.GetAxis("Joystick2Horizontal");//"Joystick2Vertical"
+            armDirection = Input.GetAxis("Joystick2Vertical");//"Joystick2Horizontal"
             bucketDirection = -Input.GetAxis("ProJoystick1Horizontal2");
         }
         else

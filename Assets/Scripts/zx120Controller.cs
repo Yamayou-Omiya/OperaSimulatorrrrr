@@ -172,7 +172,7 @@ public class zx120Controller : MonoBehaviour
     void InputControllers()
     {
         boomDirection = Input.GetAxis("Joystick3Vertical");
-        swingDirection = Input.GetAxis("Joystick2Horizontal");//"Joystick2Vertical"
+        swingDirection = -1 * Input.GetAxis("Joystick2Horizontal");//"Joystick2Vertical"
         armDirection = Input.GetAxis("Joystick2Vertical");//"Joystick2Horizontal"
         bucketDirection = Input.GetAxis("Joystick3Horizontal");
         leftWheel = Input.GetAxis("Joystick1Vertical1");

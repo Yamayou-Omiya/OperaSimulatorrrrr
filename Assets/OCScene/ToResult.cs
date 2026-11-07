@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Unity.Robotics.ROSTCPConnector;
 
 public class ToResult : MonoBehaviour
 {
     public GameObject resultPanel;
-    private float time = 0f;
+    public Button retryButton;
+    private bool isRestarting = false;
+    private bool isShowingResult = false;
     public Text timeText;  // UIのTextコンポーネントをInspectorでアサイン
     public Text missText;
     public Text totalText;
@@ -15,9 +19,51 @@ public class ToResult : MonoBehaviour
     public int missCount = 0;
     public float missPenaltyPerHit = 5f;
 
+    void Awake()
+    {
+        // Static fields survive a scene reload, so reset them before any Update runs.
+        StartChecker.gameStart = false;
+        GoalChecker.goal = false;
+        RockManager.rockCount = 0;
+        MissCounter.missCount = 0;
+        TimerManager.finalTime = 0f;
+    }
+
     public void ShowResultFlow()
     {
+        if (isShowingResult || isRestarting)
+            return;
+
+        isShowingResult = true;
         StartCoroutine(ShowResultSequence());
+    }
+
+    public void RetryGame()
+    {
+        if (isRestarting || !resultPanel.activeSelf)
+            return;
+
+        string scenePath = gameObject.scene.path;
+        if (!Application.CanStreamedLevelBeLoaded(scenePath))
+        {
+            Debug.LogError("Cannot retry: add the current scene to Build Settings.");
+            return;
+        }
+
+        isRestarting = true;
+        if (retryButton != null)
+            retryButton.interactable = false;
+
+        StopAllCoroutines();
+        Time.timeScale = 1f;
+        Input.ResetInputAxes();
+
+        // This connector only disconnects automatically when Play mode ends.
+        // Stop its connection thread before the scene destroys the old instance.
+        foreach (var connection in FindObjectsOfType<ROSConnection>())
+            connection.Disconnect();
+
+        SceneManager.LoadSceneAsync(scenePath, LoadSceneMode.Single);
     }
 
     private IEnumerator ShowResultSequence()

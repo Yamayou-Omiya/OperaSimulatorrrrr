@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Reflection;
 using UnityEngine.SceneManagement;
 using Unity.Robotics.ROSTCPConnector;
 
@@ -11,6 +12,7 @@ public class ToResult : MonoBehaviour
     public Button retryButton;
     private bool isRestarting = false;
     private bool isShowingResult = false;
+    private ROSConnection demoRosConnection;
     public Text timeText;  // UIのTextコンポーネントをInspectorでアサイン
     public Text missText;
     public Text totalText;
@@ -27,6 +29,44 @@ public class ToResult : MonoBehaviour
         RockManager.rockCount = 0;
         MissCounter.missCount = 0;
         TimerManager.finalTime = 0f;
+
+        // Configure this scene's connection before its Start creates a HUD.
+        demoRosConnection = ROSConnection.GetOrCreateInstance();
+        demoRosConnection.ShowHud = false;
+        if (demoRosConnection.HUDPanel != null)
+            demoRosConnection.HUDPanel.enabled = false;
+        RemoveDemoRosHudHeaders(null);
+    }
+
+    void OnDestroy()
+    {
+        // v0.7.1 stores HUD callbacks in a static list, which outlives the scene.
+        RemoveDemoRosHudHeaders(demoRosConnection);
+        if (demoRosConnection != null)
+            demoRosConnection.Disconnect();
+    }
+
+    private static void RemoveDemoRosHudHeaders(ROSConnection connection)
+    {
+        // v0.7.1 exposes registration but no public unregister method.
+        // Remove only this connection's header and already-destroyed ROS owners.
+        var field = typeof(HudPanel).GetField("s_HeaderContents",
+            BindingFlags.Static | BindingFlags.NonPublic);
+        var headers = field == null ? null :
+            field.GetValue(null) as SortedList<int, System.Action>;
+        if (headers == null)
+            return;
+
+        for (int i = headers.Count - 1; i >= 0; i--)
+        {
+            var callback = headers.Values[i];
+            var owner = callback == null ? null : callback.Target as ROSConnection;
+            if (!object.ReferenceEquals(owner, null) &&
+                (owner == null || object.ReferenceEquals(owner, connection)))
+            {
+                headers.RemoveAt(i);
+            }
+        }
     }
 
     public void ShowResultFlow()
